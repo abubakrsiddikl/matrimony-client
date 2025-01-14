@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { TfiLayoutMenuV } from "react-icons/tfi";
@@ -47,7 +47,7 @@ const Navbar = () => {
       {/* Login Button */}
       <div className="hidden lg:block">
         <Button variant="contained" color="primary">
-          Login
+         <Link to="/login">Login</Link>
         </Button>
       </div>
 
