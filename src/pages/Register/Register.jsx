@@ -2,17 +2,27 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { imageUpload } from "../../utility/utility";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     const image = data.image[0];
     const photoURL = await imageUpload(image);
-    console.log({...data,photoURL})
+    // create user in firebase
+    try {
+      const result = await createUser(data.email, data.password);
+      await updateUserProfile(data.name, photoURL);
+      toast.success("You are  registered now !")
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
   return (
     <div className="flex items-center justify-center h-screen w-full">

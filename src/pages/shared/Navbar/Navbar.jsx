@@ -4,11 +4,19 @@ import { useState } from "react";
 import { TfiLayoutMenuV } from "react-icons/tfi";
 import { VscMenu } from "react-icons/vsc";
 import logo from "../../../assets/logo2.jpeg";
-import "./Navbar.css"
+import "./Navbar.css";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
-
+  const { logOut, user } = useAuth();
+  // handle logOut
+  const handleLogOut = () => {
+    logOut();
+    toast.success("Logout successfull !");
+  };
+  console.log(user)
   const links = (
     <ul className="flex flex-col lg:flex-row justify-center items-center gap-5 text-blue-900 lg:static lg:flex">
       <li>
@@ -46,9 +54,17 @@ const Navbar = () => {
 
       {/* Login Button */}
       <div className="hidden lg:block">
-        <Button variant="contained" color="primary">
-         <Link to="/login">Login</Link>
-        </Button>
+        {user ? (
+          <Button onClick={handleLogOut} variant="contained" color="primary">
+            Log Out
+          </Button>
+        ) : (
+          <NavLink to="/login">
+            <Button variant="contained" color="primary">
+              Login
+            </Button>
+          </NavLink>
+        )}
       </div>
 
       {/* Hamburger Menu Icon for Small Screens */}
