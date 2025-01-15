@@ -16,7 +16,7 @@ const Navbar = () => {
     logOut();
     toast.success("Logout successfull !");
   };
-  console.log(user)
+  
   const links = (
     <ul className="flex flex-col lg:flex-row justify-center items-center gap-5 text-blue-900 lg:static lg:flex">
       <li>

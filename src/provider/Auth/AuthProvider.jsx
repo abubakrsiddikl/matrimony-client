@@ -13,12 +13,13 @@ import {
 
 import axios from "axios";
 import { auth } from "../../firebase/firebase.config";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
 
 const googleProvider = new GoogleAuthProvider();
-
+const axiosPublic = useAxiosPublic();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -54,7 +55,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       console.log("CurrentUser :", currentUser?.email);
-      setUser(currentUser);
+
+      if (currentUser?.email) {
+        setUser(currentUser);
+
+        // get jwt
+        await axiosPublic.post(
+          "/jwt",
+          {
+            email: currentUser?.email,
+          },
+          { withCredentials: true }
+        );
+      } else {
+        setUser(currentUser);
+        await axiosPublic.get("/logout", {
+          withCredentials: true,
+        });
+      }
       setLoading(false);
     });
     return () => {

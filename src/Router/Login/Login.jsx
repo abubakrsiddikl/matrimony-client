@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import SocialLogin from "../../pages/shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -13,25 +14,23 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    
     //login user
-    try{
-        const result = await signIn(data.email, data.password);
-        navigate("/")
-        toast.success("You are logged in !")
-    }catch(err){
-        toast.error(err.message)
+    try {
+      const result = await signIn(data.email, data.password);
+      navigate("/");
+      toast.success("You are logged in !");
+    } catch (err) {
+      toast.error(err.message);
     }
-   
   };
   return (
     <div className="flex items-center justify-center h-screen w-full">
-      <div className="w-full  py-20 bg-slate-400 flex items-center justify-center">
+      <div className="bg-[#F2F2F2] py-10 px-24 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
           <h1 className="text-center text-3xl font-bold text-black mb-5">
             Please Login !
           </h1>
-         
+
           {/* Email Field */}
           <div className="mb-5">
             <label
@@ -49,7 +48,7 @@ const Login = () => {
               required
             />
           </div>
-         
+
           {/* Password Field */}
           <div className="mb-5">
             <label
@@ -84,9 +83,11 @@ const Login = () => {
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Submit
+            Login
           </button>
         </form>
+        <SocialLogin></SocialLogin>
+        <p className="text-red-400 mt-4 text-lg">You have not Account ? <Link className="underline" to="/register">Please Register</Link></p>
       </div>
     </div>
   );

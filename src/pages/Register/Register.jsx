@@ -4,9 +4,12 @@ import { useForm } from "react-hook-form";
 import { imageUpload } from "../../utility/utility";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -19,14 +22,15 @@ const Register = () => {
     try {
       const result = await createUser(data.email, data.password);
       await updateUserProfile(data.name, photoURL);
-      toast.success("You are  registered now !")
+      navigate("/")
+      toast.success("You are  registered now !");
     } catch (err) {
       toast.error(err.message);
     }
   };
   return (
     <div className="flex items-center justify-center h-screen w-full">
-      <div className="w-full  py-20 bg-slate-400 flex items-center justify-center">
+      <div className="bg-[#F2F2F2] py-10 px-24 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
           <h1 className="text-center text-3xl font-bold text-black mb-5">
             Please Regiser !
@@ -116,9 +120,11 @@ const Register = () => {
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Submit
+            Register
           </button>
         </form>
+        <SocialLogin></SocialLogin>
+        <p className="text-red-400 mt-4 text-lg">You have already Account ? <Link className="underline" to="/login">Please Login</Link></p>
       </div>
     </div>
   );
