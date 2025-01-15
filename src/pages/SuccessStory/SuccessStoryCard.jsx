@@ -3,7 +3,7 @@ import React from "react";
 const SuccessStoryCard = () => {
   return (
     <div>
-      <div className="max-w-sm bg-white shadow-lg rounded-lg overflow-hidden mx-auto">
+      <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden mx-auto">
         {/* Couple Image */}
         <img
           src="https://via.placeholder.com/150"
@@ -18,7 +18,7 @@ const SuccessStoryCard = () => {
             Marriage Date: <span className="font-semibold">20-12-2024</span>
           </p>
 
-          {/* Review Stars */}
+          {/*  Stars */}
           <div className="flex items-center mb-3">
             {/* Full Stars */}
             

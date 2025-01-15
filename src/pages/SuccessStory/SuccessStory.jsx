@@ -25,7 +25,9 @@ const SuccessStory = () => {
         <SwiperSlide>
           <SuccessStoryCard></SuccessStoryCard>
         </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>
+          <SuccessStoryCard></SuccessStoryCard>
+        </SwiperSlide>
       </Swiper>
     </section>
   );
