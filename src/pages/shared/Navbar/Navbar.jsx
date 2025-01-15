@@ -16,7 +16,7 @@ const Navbar = () => {
     logOut();
     toast.success("Logout successfull !");
   };
-  
+
   const links = (
     <ul className="flex flex-col lg:flex-row justify-center items-center gap-5 text-blue-900 lg:static lg:flex">
       <li>
@@ -37,6 +37,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/contact" className="hover:text-blue-600">
           Contact Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard" className="hover:text-blue-600">
+          Dashboard
         </NavLink>
       </li>
     </ul>
