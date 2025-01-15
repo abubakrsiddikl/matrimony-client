@@ -2,6 +2,7 @@ import Banner from "../Banner/Banner";
 import BannerPremiumCards from "../BannerPremiumCard/BannerPremiumCards";
 import HowItsWorks from "../HowItsWorks/HowItsWorks";
 import SuccessCounter from "../SuccessCounter/SuccessCounter";
+import SuccessStory from "../SuccessStory/SuccessStory";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <BannerPremiumCards></BannerPremiumCards>
       <HowItsWorks></HowItsWorks>
       <SuccessCounter></SuccessCounter>
+      <SuccessStory></SuccessStory>
     </div>
   );
 };
