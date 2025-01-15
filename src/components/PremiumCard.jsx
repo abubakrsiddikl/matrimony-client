@@ -5,7 +5,7 @@ const PremiumCard = ({ card }) => {
     <div className="grid grid-cols-1 my-10 md:grid-cols-2 gap-3 ">
         {/* card 1 */}
         <div className="w-full mx-auto p-6 bg-white shadow-lg rounded-lg border border-gray-200 flex flex-col md:flex-row items-center md:space-x-6 space-y-6 md:space-y-0">
-      {/* Image */}
+      {/* image */}
       <div className="w-40 h-40 overflow-hidden rounded-full border-4 border-indigo-500 mx-auto md:mx-0">
         <img
           src="https://i.ibb.co.com/x51z2Ym/myprofile.jpg"
@@ -13,7 +13,7 @@ const PremiumCard = ({ card }) => {
           alt="Profile"
         />
       </div>
-      {/* Card Content */}
+      {/* card content */}
       <div className="text-center md:text-left space-y-2 flex-1">
         <p className="text-2xl font-bold text-gray-700">
           Biodata Id: <span className="text-indigo-600">1</span>
@@ -30,7 +30,7 @@ const PremiumCard = ({ card }) => {
         <p className="text-lg text-gray-600">
           Occupation: <span className="font-medium">Student</span>
         </p>
-        {/* Button */}
+        {/* button*/}
         <button className="mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-full shadow hover:bg-indigo-700 transition duration-300">
           View Profile
         </button>

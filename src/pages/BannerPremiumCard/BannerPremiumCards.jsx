@@ -20,7 +20,9 @@ const BannerPremiumCards = () => {
         </select>
       </p>
       {/* card design */}
+      <div className="w-11/12 mx-auto">
       <PremiumCard></PremiumCard>
+      </div>
     </div>
   );
 };
