@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       // admin router
       // normal user route
       {
-        path: "editbiodata",
+        path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
       },
     ],

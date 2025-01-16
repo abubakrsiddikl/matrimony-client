@@ -20,29 +20,19 @@ const Navbar = () => {
   const links = (
     <ul className="flex flex-col lg:flex-row justify-center items-center gap-5 text-blue-900 lg:static lg:flex">
       <li>
-        <NavLink to="/" className="hover:text-blue-600">
-          Home
-        </NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/biodatas" className="hover:text-blue-600">
-          Biodatas
-        </NavLink>
+        <NavLink to="/biodatas">Biodatas</NavLink>
       </li>
       <li>
-        <NavLink to="/about" className="hover:text-blue-600">
-          About Us
-        </NavLink>
+        <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/contact" className="hover:text-blue-600">
-          Contact Us
-        </NavLink>
+        <NavLink to="/contact">Contact Us</NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard" className="hover:text-blue-600">
-          Dashboard
-        </NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
     </ul>
   );
@@ -72,7 +62,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Hamburger Menu Icon for Small Screens */}
+      {/* icon md divice */}
       <div className="lg:hidden">
         <button
           onClick={() => setDropdown(!dropdown)}
@@ -86,18 +76,10 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Dropdown Menu for Small Screens */}
+      {/* dropdown mobile divice */}
       {dropdown && (
-        <div className="absolute top-14 right-0 w-full bg-red-600 lg:hidden">
+        <div className="z-50 py-3 absolute top-14 right-0 w-full bg-[#D1A054] lg:hidden">
           {links}
-          <Button
-            variant="contained"
-            color="primary"
-            className="mt-4"
-            onClick={() => setDropdown(false)} // Close the dropdown on login click
-          >
-            Login
-          </Button>
         </div>
       )}
     </div>
