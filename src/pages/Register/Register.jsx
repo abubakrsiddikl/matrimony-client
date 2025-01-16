@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "../shared/SocialLogin/SocialLogin";
 import { Link, useNavigate } from "react-router-dom";
+import { saveUser } from "../../utility/saveUser";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
@@ -22,7 +23,8 @@ const Register = () => {
     try {
       const result = await createUser(data.email, data.password);
       await updateUserProfile(data.name, photoURL);
-      navigate("/")
+      saveUser(result?.user)
+      navigate("/");
       toast.success("You are  registered now !");
     } catch (err) {
       toast.error(err.message);
@@ -124,7 +126,12 @@ const Register = () => {
           </button>
         </form>
         <SocialLogin></SocialLogin>
-        <p className="text-red-400 mt-4 text-lg">You have already Account ? <Link className="underline" to="/login">Please Login</Link></p>
+        <p className="text-red-400 mt-4 text-lg">
+          You have already Account ?{" "}
+          <Link className="underline" to="/login">
+            Please Login
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -2,12 +2,15 @@ import toast from "react-hot-toast";
 import useAuth from "../../../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import { saveUser } from "../../../utility/saveUser";
+
 
 const SocialLogin = () => {
   const navigate = useNavigate();
   const { signInWithGoogle } = useAuth();
   const handleGoogleSignIn = async () => {
     const result = await signInWithGoogle();
+    saveUser(result?.user);
     toast.success("You are logged in !");
     navigate("/");
   };
