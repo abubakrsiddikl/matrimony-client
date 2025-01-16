@@ -64,7 +64,7 @@ const Dashboard = () => {
       </button>
 
       {/* Right side content */}
-      <div className="flex-1 ml-0 md:ml-[25%] lg:ml-[20%]">
+      <div className="flex-1 ">
         <Outlet></Outlet>
       </div>
     </div>
