@@ -14,7 +14,7 @@ const ViewBiodata = () => {
       return data;
     },
   });
-  console.log(biodata)
+  console.log(biodata);
   // handle make premium button
   const handleMakePremium = () => {
     Swal.fire({
@@ -37,12 +37,12 @@ const ViewBiodata = () => {
   };
 
   return (
-    <div className="bg-gray-100 py-10">
-      <div className="flex flex-col items-center gap-5 md:flex-row md:justify-center md:items-center">
+    <div className="bg-[#F2F2F2] py-10">
+      <div className=" flex flex-col items-center gap-5 md:flex-row md:justify-start md:items-center md:px-20">
         {/* Profile Picture */}
         <img
           src="https://i.ibb.co/SRJ5dPV/myprofile.jpg"
-          className="w-28 h-28 rounded-full shadow-lg"
+          className="w-36 h-36  shadow-lg"
           alt="Profile"
         />
         {/* Name and ID */}
@@ -51,6 +51,9 @@ const ViewBiodata = () => {
             Name: <span className="text-gray-500">Md Limon</span>
           </p>
           <p className="text-xl font-medium text-gray-700">ID: 01</p>
+          <p className="text-xl font-medium text-gray-700">
+            Biodata Type: {biodata.biodataType}
+          </p>
           <button
             onClick={handleMakePremium}
             className="bg-[#5850EC] rounded-lg py-3 px-4 text-white font-bold mt-2"
@@ -61,18 +64,16 @@ const ViewBiodata = () => {
       </div>
 
       {/* Biodata Details */}
-      <div className="grid grid-cols-1 gap-6 mt-10 px-5 md:grid-cols-2 md:px-20">
-        {/* Left Column */}
-        <div className="space-y-4">
-          <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Biodata Type:</strong>{" "}
-            {biodata.biodataType}
-          </p>
-          <p className="text-lg text-gray-800">
+      <div className="grid grid-cols-1 gap-6 mt-10 px-5 md:px-20">
+        {/* Personal details card */}
+        <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
+          <h1 className="text-2xl text-center">Personal Details</h1>
+          <hr />
+          <p className="text-xl text-gray-800">
             <strong className="font-semibold">Name:</strong> {biodata.name}
           </p>
           <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Date of Birth:</strong>{" "}
+            <strong className="font-semibold">Date of Birth:</strong>
             {biodata.dateOfBirth}
           </p>
           <p className="text-lg text-gray-800">
@@ -92,9 +93,10 @@ const ViewBiodata = () => {
             <strong className="font-semibold">Race:</strong> {biodata.race}
           </p>
         </div>
-
-        {/* Right Column */}
-        <div className="space-y-4">
+        {/* parent details */}
+        <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
+          <h1 className="text-2xl text-center">Parent Details</h1>
+          <hr />
           <p className="text-lg text-gray-800">
             <strong className="font-semibold">Father's Name:</strong>{" "}
             {biodata.fathersName}
@@ -103,6 +105,12 @@ const ViewBiodata = () => {
             <strong className="font-semibold">Mother's Name:</strong>{" "}
             {biodata.mothersName}
           </p>
+        </div>
+
+        {/* address details */}
+        <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
+          <h1 className="text-2xl text-center">Adress Details</h1>
+          <hr />
           <p className="text-lg text-gray-800">
             <strong className="font-semibold">Permanent Division:</strong>{" "}
             {biodata.permanentDivision}
@@ -111,18 +119,33 @@ const ViewBiodata = () => {
             <strong className="font-semibold">Present Division:</strong>{" "}
             {biodata.presentDivision}
           </p>
+        </div>
+
+        {/* partner details */}
+        <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
+          <h1 className="text-2xl text-center">Expected Partner Details</h1>
+          <hr />
           <p className="text-lg text-gray-800">
             <strong className="font-semibold">Expected Partner Age:</strong>{" "}
-            {biodata.expectedPartnerAge}
+            {biodata.partnerAge}
           </p>
           <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Expected Partner Height:</strong>{" "}
-            {biodata.expectedPartnerHeight}
+            <strong className="font-semibold mr-2">
+              Expected Partner Height:
+            </strong>
+            {biodata.partnerHeight} inch
           </p>
           <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Expected Partner Weight:</strong>{" "}
-            {biodata.expectedPartnerWeight}
+            <strong className="font-semibold mr-2">
+              Expected Partner Weight:
+            </strong>
+            {biodata.partnerWeight} kg
           </p>
+        </div>
+        {/* contact details */}
+        <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
+          <h1 className="text-2xl text-center">Contact Details</h1>
+          <hr />
           <p className="text-lg text-gray-800">
             <strong className="font-semibold">Contact Email:</strong>{" "}
             {biodata.email}

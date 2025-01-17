@@ -25,12 +25,12 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="block lg:flex h-full">
       {/* Left side navigation */}
       <div
-        className={`bg-[#D1A054] p-5 flex flex-col fixed top-0 left-0 h-screen z-50 transition-transform duration-300 ${
-          isNavOpen ? "translate-x-0" : "-translate-x-full"
-        } overflow-auto md:translate-x-0 md:static md:flex md:w-1/4 lg:w-1/5`}
+        className={`bg-[#D1A054] p-5  flex flex-col fixed top-0 left-0  z-50 transition-transform duration-300 ${
+          isNavOpen ? "translate-x-0 " : "-translate-x-full"
+        } overflow-auto  md:translate-x-0 md:static md:flex md:w-1/4 lg:w-1/5`}
       >
         {/* Logo */}
         <Link to="/" className="mb-5">

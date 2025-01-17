@@ -13,6 +13,8 @@ import MyFavouritesBiodata from "../pages/Dashboard/NormalUser/ MyFavouritesBiod
 import MyContactRequest from "../pages/Dashboard/NormalUser/MyContactRequest/MyContactRequest";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
+import ApprovedPremium from "../pages/Dashboard/Admin/ApprovedPremium/ApprovedPremium";
+import ApprovedContactRequest from "../pages/Dashboard/Admin/ ApprovedContactRequest/ApprovedContactRequest";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
       {
         path: "manage",
         element: <ManageUser></ManageUser>,
+      },
+      {
+        path: "approvedPremium",
+        element: <ApprovedPremium></ApprovedPremium>,
+      },
+      {
+        path: "apporovedContactRequest",
+        element: <ApprovedContactRequest></ApprovedContactRequest>,
       },
       // normal user route
       {
