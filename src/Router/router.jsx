@@ -8,6 +8,7 @@ import Biodatas from "../pages/Biodatas/Biodatas";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import EditBiodata from "../pages/Dashboard/NormalUser/EditBiodata/EditBiodata";
 import PrivateRoute from "./PrivateRoute";
+import ViewBiodata from "../pages/Dashboard/NormalUser/ViewBiodata/ViewBiodata";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
+      },
+      {
+        path: "viewBiodata",
+        element: <ViewBiodata></ViewBiodata>,
       },
     ],
   },
