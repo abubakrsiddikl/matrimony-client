@@ -14,6 +14,7 @@ const ViewBiodata = () => {
       return data;
     },
   });
+  console.log(biodata)
   // handle make premium button
   const handleMakePremium = () => {
     Swal.fire({

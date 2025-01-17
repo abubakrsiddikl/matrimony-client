@@ -6,10 +6,12 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { CiTextAlignJustify } from "react-icons/ci";
 import { IoClose } from "react-icons/io5";
+import useRole from "../../hooks/useRole";
 
 const Dashboard = () => {
   const { logOut } = useAuth();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { role, isLoading } = useRole();
 
   // handle logout
   const handleLogOut = () => {
@@ -23,7 +25,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full">
       {/* Left side navigation */}
       <div
         className={`bg-[#D1A054] p-5 flex flex-col fixed top-0 left-0 h-screen z-50 transition-transform duration-300 ${
@@ -40,10 +42,14 @@ const Dashboard = () => {
         </Link>
 
         {/* Admin Menu */}
-        <AdminMenu handleLogOut={handleLogOut}></AdminMenu>
+        {role === "admin" && (
+          <AdminMenu handleLogOut={handleLogOut}></AdminMenu>
+        )}
 
         {/* Normal User Menu */}
-        <NormalUserMenu handleLogOut={handleLogOut}></NormalUserMenu>
+        {role === "normal" && (
+          <NormalUserMenu handleLogOut={handleLogOut}></NormalUserMenu>
+        )}
       </div>
 
       {/* Toggle Button for Mobile */}
@@ -53,7 +59,7 @@ const Dashboard = () => {
       >
         {isNavOpen ? (
           <p className="flex justify-center items-center gap-2">
-          Menu <IoClose />
+            Menu <IoClose />
           </p>
         ) : (
           <p className="flex justify-center items-center gap-2">

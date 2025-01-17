@@ -10,6 +10,9 @@ import EditBiodata from "../pages/Dashboard/NormalUser/EditBiodata/EditBiodata";
 import PrivateRoute from "./PrivateRoute";
 import ViewBiodata from "../pages/Dashboard/NormalUser/ViewBiodata/ViewBiodata";
 import MyFavouritesBiodata from "../pages/Dashboard/NormalUser/ MyFavouritesBiodata/ MyFavouritesBiodata";
+import MyContactRequest from "../pages/Dashboard/NormalUser/MyContactRequest/MyContactRequest";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +51,14 @@ const router = createBrowserRouter([
     ),
     children: [
       // admin router
+      {
+        path: "adminDashboard",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "manage",
+        element: <ManageUser></ManageUser>,
+      },
       // normal user route
       {
         path: "editBiodata",
@@ -56,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "viewBiodata",
         element: <ViewBiodata></ViewBiodata>,
+      },
+      {
+        path: "myContactRequest",
+        element: <MyContactRequest></MyContactRequest>,
       },
       {
         path: "favouritesBiodata",
