@@ -15,6 +15,7 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
 import ApprovedPremium from "../pages/Dashboard/Admin/ApprovedPremium/ApprovedPremium";
 import ApprovedContactRequest from "../pages/Dashboard/Admin/ ApprovedContactRequest/ApprovedContactRequest";
+import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,14 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/biodatas",
+        path: "/biodata",
         element: <Biodatas></Biodatas>,
+      },
+      {
+        path: "biodata/details/:id",
+        element: <BiodataDetails></BiodataDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/biodata/details/${params.id}`),
       },
       {
         path: "/contact",

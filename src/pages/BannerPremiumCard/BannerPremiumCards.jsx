@@ -3,6 +3,8 @@ import SectionTitle from "../../components/SectionTitle";
 
 
 const BannerPremiumCards = () => {
+  
+  // handle age short
   const handlSort = (order) => {
      console.log(order)
     // const sortedData = [...data].sort((a, b) =>

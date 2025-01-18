@@ -50,7 +50,7 @@ const ViewBiodata = () => {
           <p className="text-2xl font-bold text-gray-800">
             Name: <span className="text-gray-500">Md Limon</span>
           </p>
-          <p className="text-xl font-medium text-gray-700">ID: 01</p>
+          <p className="text-xl font-medium text-gray-700">ID: 01234</p>
           <p className="text-xl font-medium text-gray-700">
             Biodata Type: {biodata.biodataType}
           </p>
