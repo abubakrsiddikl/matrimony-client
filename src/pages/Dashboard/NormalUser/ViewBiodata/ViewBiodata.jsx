@@ -31,7 +31,7 @@ const ViewBiodata = () => {
       );
     }
     if (biodata?.isPremium === "premium") {
-      return toast.success("You haved already premium");
+      return toast.success("Your biodata already premium !");
     }
     Swal.fire({
       title: "Are you sure?",
