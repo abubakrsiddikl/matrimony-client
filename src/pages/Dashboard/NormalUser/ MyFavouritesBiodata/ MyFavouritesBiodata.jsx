@@ -3,20 +3,50 @@ import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import { MdDelete } from "react-icons/md";
+import LoadingSppiner from "../../../../components/LoadingSppiner";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const MyFavouritesBiodata = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: biodata = [] } = useQuery({
-    queryKey: ["biodata", user?.email],
+  const {
+    data: biodata = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["biodata"],
     queryFn: async () => {
       const { data } = await axiosSecure(`/favourites-biodata/${user?.email}`);
       return data;
     },
   });
+  // loading to return spinner
+  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
   // handle delete biodata
   const handleDelete = (id) => {
-    console.log(id)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const { data } = await axiosSecure.delete(`/favourites-biodata/${id}`);
+        // data refetch
+        refetch();
+        if (data.deletedCount) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      }
+    });
   };
   return (
     <div className="md:p-7">
