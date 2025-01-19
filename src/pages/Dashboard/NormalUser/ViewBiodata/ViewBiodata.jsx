@@ -5,23 +5,30 @@ import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import daimond from "../../../../assets/daimond.png";
 import toast from "react-hot-toast";
+import LoadingSppiner from "../../../../components/LoadingSppiner";
 
 const ViewBiodata = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: biodata = {} } = useQuery({
+  const {
+    data: biodata = {},
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["biodata", user?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(`/biodata/${user?.email}`);
       return data;
     },
   });
-  console.log(biodata);
+  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
   // handle make premium button
   const handleMakePremium = () => {
     // check user requset or not requst or already premium
     if (biodata?.isPremium === "requested") {
-      return toast.error("You already requested . Please waite some time");
+      return toast.error(
+        "You have already requested . Please waite some time !"
+      );
     }
     if (biodata?.isPremium === "premium") {
       return toast.success("You haved already premium");
@@ -40,6 +47,7 @@ const ViewBiodata = () => {
         const { data } = await axiosSecure.patch(
           `/biodata-premium/request/${user?.email}`
         );
+        refetch();
         if (data.modifiedCount) {
           Swal.fire({
             title: "success!",
@@ -69,13 +77,19 @@ const ViewBiodata = () => {
           <p className="text-xl font-medium text-gray-700">
             Biodata Type: {biodata.biodataType}
           </p>
-          <button
-            onClick={handleMakePremium}
-            className="bg-[#5850EC] rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2"
-          >
-            <img src={daimond} className="w-7" alt="" />
-            Make Biodata to Premium
-          </button>
+          <p onClick={handleMakePremium}>
+            {biodata?.isPremium === "premium" ? (
+              <button className="bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2">
+              <img src={daimond} className="w-7" alt="" />
+              Your Biodata is Premium
+            </button>
+            ) : (
+              <button className="bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2">
+                <img src={daimond} className="w-7" alt="" />
+                Make Biodata to Premium
+              </button>
+            )}
+          </p>
         </div>
       </div>
 

@@ -31,9 +31,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
+      <li>{user && <NavLink to="/dashboard">Dashboard</NavLink>}</li>
     </ul>
   );
 
