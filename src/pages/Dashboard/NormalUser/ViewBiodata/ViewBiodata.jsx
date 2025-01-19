@@ -3,6 +3,8 @@ import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import daimond from "../../../../assets/daimond.png";
+import toast from "react-hot-toast";
 
 const ViewBiodata = () => {
   const { user } = useAuth();
@@ -17,6 +19,13 @@ const ViewBiodata = () => {
   console.log(biodata);
   // handle make premium button
   const handleMakePremium = () => {
+    // check user requset or not requst or already premium
+    if (biodata?.isPremium === "requested") {
+      return toast.error("You already requested . Please waite some time");
+    }
+    if (biodata?.isPremium === "premium") {
+      return toast.success("You haved already premium");
+    }
     Swal.fire({
       title: "Are you sure?",
       text: "If are you sure to make you premium",
@@ -25,13 +34,19 @@ const ViewBiodata = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "success!",
-          text: "Your request has been sent to admin.",
-          icon: "success",
-        });
+        // add premium request sent admin
+        const { data } = await axiosSecure.patch(
+          `/biodata-premium/request/${user?.email}`
+        );
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "success!",
+            text: "Your request has been sent to admin.",
+            icon: "success",
+          });
+        }
       }
     });
   };
@@ -56,8 +71,9 @@ const ViewBiodata = () => {
           </p>
           <button
             onClick={handleMakePremium}
-            className="bg-[#5850EC] rounded-lg py-3 px-4 text-white font-bold mt-2"
+            className="bg-[#5850EC] rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2"
           >
+            <img src={daimond} className="w-7" alt="" />
             Make Biodata to Premium
           </button>
         </div>
