@@ -2,10 +2,37 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import daimond from "../../assets/daimond.png";
 import card from "../../assets/card.png";
+import useAuth from "../../hooks/useAuth";
+import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
-  console.log(biodata);
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  //   handle add to favourites
+  const handleAddToFavourites = async () => {
+    const userData = {
+      name: biodata?.name,
+      email: user?.email,
+      biodataId: biodata?.biodataId,
+      permanentAddress: biodata?.permanentDivision,
+      occupation: biodata?.occupation,
+    };
+    // add to favourties to save db
+    try {
+      const { data } = await axiosSecure.post("/favourites-biodata", userData);
+      console.log(data);
+      if (data.insertedId) {
+        toast.success(
+          `${biodata?.biodataId} This ID add to fovourties successfull.`
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="bg-[#F2F2F2] py-10 mt-2">
       <div className=" flex flex-col items-center gap-5 md:flex-row md:justify-start md:items-center md:px-20">
@@ -25,11 +52,12 @@ const BiodataDetails = () => {
             Biodata Type: {biodata.biodataType}
           </p>
           <button
+            onClick={handleAddToFavourites}
             type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 gap-2 mt-2"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 gap-2 mt-2"
           >
             <img src={card} className="w-7" alt="" />
-            Add to Favourites 
+            Add to Favourites
           </button>
         </div>
       </div>

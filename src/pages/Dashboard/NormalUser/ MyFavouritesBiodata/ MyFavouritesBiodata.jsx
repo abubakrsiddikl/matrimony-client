@@ -1,6 +1,23 @@
 import React from "react";
+import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../../hooks/useAuth";
+import { MdDelete } from "react-icons/md";
 
 const MyFavouritesBiodata = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { data: biodata = [] } = useQuery({
+    queryKey: ["biodata", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/favourites-biodata/${user?.email}`);
+      return data;
+    },
+  });
+  // handle delete biodata
+  const handleDelete = (id) => {
+    console.log(id)
+  };
   return (
     <div className="md:p-7">
       <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -25,39 +42,25 @@ const MyFavouritesBiodata = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td className="px-4 py-2">John Doe</td>
-              <td className="px-4 py-2">BD1234</td>
-              <td className="px-4 py-2">Dhaka, Bangladesh</td>
-              <td className="px-4 py-2">Engineer</td>
-              <td className="px-4 py-2">
-                <button className="text-blue-600 dark:text-blue-400 hover:underline">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td className="px-4 py-2">Jane Smith</td>
-              <td className="px-4 py-2">BD5678</td>
-              <td className="px-4 py-2">Chittagong, Bangladesh</td>
-              <td className="px-4 py-2">Doctor</td>
-              <td className="px-4 py-2">
-                <button className="text-blue-600 dark:text-blue-400 hover:underline">
-                  Edit
-                </button>
-              </td>
-            </tr>
-            <tr className="bg-white dark:bg-gray-800">
-              <td className="px-4 py-2">Alice Brown</td>
-              <td className="px-4 py-2">BD7890</td>
-              <td className="px-4 py-2">Sylhet, Bangladesh</td>
-              <td className="px-4 py-2">Teacher</td>
-              <td className="px-4 py-2">
-                <button className="text-blue-600 dark:text-blue-400 hover:underline">
-                  Edit
-                </button>
-              </td>
-            </tr>
+            {biodata.map((item) => (
+              <tr
+                key={item._id}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <td className="px-4 py-2">{item?.name}</td>
+                <td className="px-4 py-2">{item?.biodataId}</td>
+                <td className="px-4 py-2">{item?.permanentAddress}</td>
+                <td className="px-4 py-2">{item?.occupation}</td>
+                <td className="px-4 py-2">
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="text-red-600  text-xl"
+                  >
+                    <MdDelete />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
