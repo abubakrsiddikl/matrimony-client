@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
@@ -52,6 +53,7 @@ const CheckoutForm = () => {
           card: card,
           billing_details: {
             email: user?.email,
+            name: user?.name,
           },
         },
       });
@@ -59,6 +61,21 @@ const CheckoutForm = () => {
       console.log("confirm error", confirmError);
     } else {
       console.log("paymentIntent", paymentIntent);
+      if (paymentIntent?.status === "succeeded") {
+        toast.success(
+          `You have successfully payment. Please waite admin confirmaition !`
+        );
+        toast.success(`Your Transaction ID: ${paymentIntent?.id}`);
+        const paymentInfo = {
+          email: user?.email,
+          name: user?.name,
+          biodataId: id,
+          transactionId: paymentIntent.id,
+          status: "pending",
+        };
+        // save payment info to db
+        await axiosSecure.post("/payment", paymentInfo);
+      }
     }
   };
   return (
