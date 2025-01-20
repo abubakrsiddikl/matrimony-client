@@ -58,7 +58,8 @@ const CheckoutForm = () => {
         },
       });
     if (confirmError) {
-      console.log("confirm error", confirmError);
+      // console.log("confirm error", confirmError);
+      toast.error(confirmError.message);
     } else {
       console.log("paymentIntent", paymentIntent);
       if (paymentIntent?.status === "succeeded") {
@@ -69,9 +70,9 @@ const CheckoutForm = () => {
         const paymentInfo = {
           email: user?.email,
           name: user?.name,
-          biodataId: id,
+          biodataId: parseInt(id),
           transactionId: paymentIntent.id,
-          status: "pending",
+          status: "Pending",
         };
         // save payment info to db
         await axiosSecure.post("/payment", paymentInfo);

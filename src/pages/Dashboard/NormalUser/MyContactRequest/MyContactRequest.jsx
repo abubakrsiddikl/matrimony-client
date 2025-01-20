@@ -1,6 +1,42 @@
 import React from "react";
+import useAuth from "../../../../hooks/useAuth";
+import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSppiner from "../../../../components/LoadingSppiner";
+import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const MyContactRequest = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { data: contactInfo = [], isLoading } = useQuery({
+    queryKey: ["request"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/myContact-request/${user?.email}`);
+      return data;
+    },
+  });
+  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
+  // handle delete contact info
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
   return (
     <div className="md:p-7">
       <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -29,14 +65,35 @@ const MyContactRequest = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td className="px-4 py-2">John Doe</td>
-              <td className="px-4 py-2">BD1234</td>
-              <td className="px-4 py-2">Dhaka, Bangladesh</td>
-              <td className="px-4 py-2">Engineer</td>
-              <td className="px-4 py-2">limonsk026@gmail.com</td>
-              <td className="px-4 py-2 text-red-500">delet</td>
-            </tr>
+            {contactInfo.map((item, idx) => (
+              <tr
+                key={idx}
+                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+              >
+                <td className="px-4 py-2">{item?.contactName}</td>
+                <td className="px-4 py-2">{item?.biodataId}</td>
+                <td className="px-4 py-2 text-red-700">{item?.status}</td>
+                <td className="px-4 py-2 text-blue-500">
+                  {item?.status === "Approve" ? (
+                    item?.mobileNumber
+                  ) : (
+                    <p className="text-red-700">Pending</p>
+                  )}
+                </td>
+                <td className="px-4 py-2">
+                  {item?.status === "Approve" ? (
+                    item?.contactEmail
+                  ) : (
+                    <p className="text-red-700">Pending</p>
+                  )}
+                </td>
+                <td className="px-4 py-2 text-2xl text-red-500 cursor-pointer">
+                  <button onClick={() => handleDelete()}>
+                    <MdDelete></MdDelete>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
