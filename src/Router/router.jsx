@@ -16,6 +16,7 @@ import ManageUser from "../pages/Dashboard/Admin/ManageUser/ManageUser";
 import ApprovedPremium from "../pages/Dashboard/Admin/ApprovedPremium/ApprovedPremium";
 import ApprovedContactRequest from "../pages/Dashboard/Admin/ ApprovedContactRequest/ApprovedContactRequest";
 import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
+import Payment from "../pages/Dashboard/NormalUser/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodata/details/${params.id}`),
+      },
+      {
+        path: "/payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/contact",

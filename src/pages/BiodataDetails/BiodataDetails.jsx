@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import daimond from "../../assets/daimond.png";
 import card from "../../assets/card.png";
 import useAuth from "../../hooks/useAuth";
@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
+  // console.log(biodata)
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -97,10 +98,12 @@ const BiodataDetails = () => {
         <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
           <h1 className="text-2xl text-center">Contact Details</h1>
           <hr />
-          <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg  px-5 py-2.5 text-center mt-2 mb-2 text-xl flex gap-2">
-            <img src={daimond} alt="" className="w-8" /> Request Contact
-            Information
-          </button>
+          <Link to={`/payment/${biodata?.biodataId}`}>
+            <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl  dark:focus:ring-pink-800 font-medium rounded-lg  px-5 py-2.5 text-center mt-2 mb-2 text-xl flex gap-2">
+              <img src={daimond} alt="" className="w-8" /> Request Contact
+              Information
+            </button>
+          </Link>
           <p className="text-lg text-gray-800">
             <strong className="font-semibold">Contact Email:</strong>{" "}
             {biodata.email}
