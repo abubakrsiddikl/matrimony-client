@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionTitle from "../../../../components/SectionTitle";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -12,12 +12,13 @@ const ManageUser = () => {
   const [search, setSearch] = useState("");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+
   const {
     data: users = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", user?.email],
+    queryKey: ["users",search],
     queryFn: async () => {
       const { data } = await axiosSecure(
         `/users/${user?.email}?searchParams=${search}`
@@ -25,8 +26,9 @@ const ManageUser = () => {
       return data;
     },
   });
-  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
 
+  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
+  console.log(users);
   const handleMakeAdmin = async (id, name) => {
     const { data } = await axiosSecure.patch(`/user/role/admin/${id}`);
     refetch();
@@ -70,6 +72,8 @@ const ManageUser = () => {
             </div>
             <input
               type="text"
+              onSubmit={(e) => e.preventDefault()}
+              value={search}
               onChange={(e) => setSearch(e.target.value)}
               id="simple-search"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

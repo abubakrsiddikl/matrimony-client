@@ -64,7 +64,7 @@ const ViewBiodata = () => {
       <div className=" flex flex-col items-center gap-5 md:flex-row md:justify-start md:items-center md:px-20">
         {/* Profile Picture */}
         <img
-          src="https://i.ibb.co/SRJ5dPV/myprofile.jpg"
+          src={biodata?.image}
           className="w-36 h-36  shadow-lg"
           alt="Profile"
         />
@@ -73,16 +73,18 @@ const ViewBiodata = () => {
           <p className="text-2xl font-bold text-gray-800">
             Name: <span className="text-gray-500">Md Limon</span>
           </p>
-          <p className="text-xl font-medium text-gray-700">ID: 01234</p>
+          <p className="text-xl font-medium text-gray-700">
+            ID: {biodata?.biodataId}
+          </p>
           <p className="text-xl font-medium text-gray-700">
             Biodata Type: {biodata.biodataType}
           </p>
           <p onClick={handleMakePremium}>
             {biodata?.isPremium === "premium" ? (
               <button className="bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2">
-              <img src={daimond} className="w-7" alt="" />
-              Your Biodata is Premium
-            </button>
+                <img src={daimond} className="w-7" alt="" />
+                Your Biodata is Premium
+              </button>
             ) : (
               <button className="bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded-lg py-3 px-4 text-white font-bold mt-2 flex justify-center items-center gap-2">
                 <img src={daimond} className="w-7" alt="" />
