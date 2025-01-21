@@ -28,10 +28,17 @@ const ManageUser = () => {
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
 
   const handleMakeAdmin = async (id, name) => {
-    const { data } = await axiosSecure.patch(`/user/role/${id}`);
+    const { data } = await axiosSecure.patch(`/user/role/admin/${id}`);
     refetch();
     if (data.modifiedCount) {
       return toast.success(`${name} has been Admin !`);
+    }
+  };
+  const handleMakePremium = async (id, name) => {
+    const { data } = await axiosSecure.patch(`/user/role/premium/${id}`);
+    refetch();
+    if (data.modifiedCount) {
+      return toast.success(`${name} has been Premium user !`);
     }
   };
   return (
@@ -137,7 +144,10 @@ const ManageUser = () => {
                         Make Premium<FaCheckDouble></FaCheckDouble>
                       </p>
                     ) : (
-                      <button className="text-red-600 hover:bg-blue-500 hover:rounded-lg hover:p-2 hover:text-white hover:font-semibold">
+                      <button
+                        onClick={() => handleMakePremium(user._id, user?.name)}
+                        className="text-red-600 hover:bg-blue-500 hover:rounded-lg hover:p-2 hover:text-white hover:font-semibold"
+                      >
                         Make Premium
                       </button>
                     )}
