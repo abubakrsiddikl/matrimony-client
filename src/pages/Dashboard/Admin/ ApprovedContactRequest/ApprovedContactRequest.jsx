@@ -3,10 +3,16 @@ import SectionTitle from "../../../../components/SectionTitle";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSppiner from "../../../../components/LoadingSppiner";
+import { FaCheckDouble } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const ApprovedContactRequest = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: request = [], isLoading } = useQuery({
+  const {
+    data: request = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["request"],
     queryFn: async () => {
       const { data } = await axiosSecure("/contact-request");
@@ -14,7 +20,17 @@ const ApprovedContactRequest = () => {
     },
   });
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
-  
+  // handle biodata contact
+  const handleBiodataRequest = async (email, biodataId) => {
+    const { data } = await axiosSecure.patch("/approved-contact/request", {
+      email: email,
+      biodataId: biodataId,
+    });
+    refetch();
+    if (data.modifiedCount > 0)
+      return toast.success(`${biodataId} this biodata has approved !`);
+    console.log(data);
+  };
   return (
     <div>
       <SectionTitle heading="Approved Contact Request"></SectionTitle>
@@ -56,7 +72,24 @@ const ApprovedContactRequest = () => {
                     )}
                   </td>
                   <td className="px-4 py-2 ">{item?.biodataId}</td>
-                  <td className="px-4 py-2 text-red-500">Approved Contact</td>
+                  <td className=" px-4 py-2">
+                    {item?.status === "Approved" ? (
+                      <p className="flex  items-center gap-1 text-blue-500 ">
+                        Approved<FaCheckDouble></FaCheckDouble>
+                      </p>
+                    ) : (
+                      <>
+                        <button
+                          className="text-red-700 hover:bg-blue-500 hover:rounded-lg hover:p-2 hover:text-white hover:font-semibold"
+                          onClick={() =>
+                            handleBiodataRequest(item?.email, item?.biodataId)
+                          }
+                        >
+                          Approved
+                        </button>
+                      </>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

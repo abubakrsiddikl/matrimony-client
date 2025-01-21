@@ -72,16 +72,24 @@ const MyContactRequest = () => {
               >
                 <td className="px-4 py-2">{item?.contactName}</td>
                 <td className="px-4 py-2">{item?.biodataId}</td>
-                <td className="px-4 py-2 text-red-700">{item?.status}</td>
+                <td
+                  className={`px-4 py-2  ${
+                    item?.status === "Approved"
+                      ? "text-blue-500"
+                      : "text-red-700"
+                  }`}
+                >
+                  {item?.status}
+                </td>
                 <td className="px-4 py-2 text-blue-500">
-                  {item?.status === "Approve" ? (
+                  {item?.status === "Approved" ? (
                     item?.mobileNumber
                   ) : (
                     <p className="text-red-700">Pending</p>
                   )}
                 </td>
-                <td className="px-4 py-2">
-                  {item?.status === "Approve" ? (
+                <td className="px-4 py-2 text-blue-500">
+                  {item?.status === "Approved" ? (
                     item?.contactEmail
                   ) : (
                     <p className="text-red-700">Pending</p>
