@@ -47,7 +47,7 @@ const Dashboard = () => {
         )}
 
         {/* Normal User Menu */}
-        {role === "normal" && (
+        {(role === "normal" || role === "premium") && (
           <NormalUserMenu handleLogOut={handleLogOut}></NormalUserMenu>
         )}
       </div>

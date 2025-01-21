@@ -5,9 +5,11 @@ import card from "../../assets/card.png";
 import useAuth from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useRole from "../../hooks/useRole";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
+  const { role } = useRole();
   // console.log(biodata)
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -98,20 +100,25 @@ const BiodataDetails = () => {
         <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">
           <h1 className="text-2xl text-center">Contact Details</h1>
           <hr />
-          <Link to={`/payment/${biodata?.biodataId}`}>
-            <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl  dark:focus:ring-pink-800 font-medium rounded-lg  px-5 py-2.5 text-center mt-2 mb-2 text-xl flex gap-2">
-              <img src={daimond} alt="" className="w-8" /> Request Contact
-              Information
-            </button>
-          </Link>
-          <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Contact Email:</strong>{" "}
-            {biodata.email}
-          </p>
-          <p className="text-lg text-gray-800">
-            <strong className="font-semibold">Mobile Number:</strong>{" "}
-            {biodata.mobileNumber}
-          </p>
+          {role === "premium" ? (
+            <>
+              <p className="text-lg text-gray-800">
+                <strong className="font-semibold">Contact Email:</strong>{" "}
+                {biodata.email}
+              </p>
+              <p className="text-lg text-gray-800">
+                <strong className="font-semibold">Mobile Number:</strong>{" "}
+                {biodata.mobileNumber}
+              </p>
+            </>
+          ) : (
+            <Link to={`/payment/${biodata?.biodataId}`}>
+              <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl  dark:focus:ring-pink-800 font-medium rounded-lg  px-5 py-2.5 text-center mt-2 mb-2 text-xl flex gap-2">
+                <img src={daimond} alt="" className="w-8" /> Request Contact
+                Information
+              </button>
+            </Link>
+          )}
         </div>
         {/* address details */}
         <div className="w-full bg-white shadow-lg px-8 py-5 rounded-lg">

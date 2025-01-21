@@ -69,7 +69,7 @@ const CheckoutForm = () => {
         toast.success(`Your Transaction ID: ${paymentIntent?.id}`);
         const paymentInfo = {
           email: user?.email,
-          name: user?.name,
+          name: user?.displayName,
           biodataId: parseInt(id),
           transactionId: paymentIntent.id,
           status: "Pending",
