@@ -7,10 +7,12 @@ import logo from "../../../assets/logo2.jpeg";
 import "./Navbar.css";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useRole from "../../../hooks/useRole";
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
   const { logOut, user } = useAuth();
+  const { role } = useRole();
   // handle logOut
   const handleLogOut = () => {
     logOut();
@@ -31,7 +33,13 @@ const Navbar = () => {
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
-      <li>{user && <NavLink to="/dashboard">Dashboard</NavLink>}</li>
+      <li>
+        {user && role === "admin" ? (
+          <NavLink to="/dashboard/adminDashboard">Dashboard</NavLink>
+        ) : (
+          <NavLink to="/dashboard/viewBiodata">Dashboard</NavLink>
+        )}
+      </li>
     </ul>
   );
 

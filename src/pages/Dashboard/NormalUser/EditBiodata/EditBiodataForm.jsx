@@ -1,8 +1,29 @@
 import React from "react";
 import useAuth from "../../../../hooks/useAuth";
 
-const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
+const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
   const { user } = useAuth();
+  const {
+    age,
+    biodataId,
+    biodataType,
+    dateOfBirth,
+    email,
+    fathersName,
+    height,
+    image,
+    mobileNumber,
+    mothersName,
+    name,
+    occupation,
+    partnerAge,
+    partnerHeight,
+    partnerWeight,
+    presentDivision,
+    race,
+    status,
+    weight,
+  } = biodata;
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -12,7 +33,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
       <div>
         <label className="block font-medium text-gray-700">Biodata Type</label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.biodataType ? biodata?.biodataType : ""}
           {...register("biodataType")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -30,6 +51,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Name</label>
         <input
           type="text"
+          defaultValue={name}
           {...register("name")}
           required
           id="name"
@@ -55,6 +77,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Date of Birth</label>
         <input
           type="date"
+          defaultValue={dateOfBirth}
           {...register("dateOfBirth")}
           required
           id="name"
@@ -67,7 +90,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
       <div>
         <label className="block font-medium text-gray-700">Height</label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.height ? biodata?.height : ""}
           {...register("height")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -86,7 +109,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
       <div>
         <label className="block font-medium text-gray-700">Weight</label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.weight ? biodata?.weight : ""}
           {...register("weight")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -106,6 +129,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Age</label>
         <input
           type="number"
+          defaultValue={age}
           {...register("age")}
           required
           placeholder="Enter your age"
@@ -117,7 +141,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
       <div>
         <label className="block font-medium text-gray-700">Occupation</label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.occupation ? biodata?.occupation : ""}
           {...register("occupation")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -135,7 +159,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
       <div>
         <label className="block font-medium text-gray-700">Race</label>
         <select
-          defaultValue=""
+          defaultValue={race}
           {...register("race")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -154,6 +178,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Fathers Name</label>
         <input
           type="text"
+          defaultValue={fathersName}
           {...register("fathersName")}
           required
           placeholder="Enter your fathers name"
@@ -166,6 +191,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Mothers name</label>
         <input
           type="text"
+          defaultValue={mothersName}
           {...register("mothersName")}
           required
           placeholder="Enter your mothers name"
@@ -179,7 +205,9 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
           Permanent Division name
         </label>
         <select
-          defaultValue=""
+          defaultValue={
+            biodata?.permanentDivision ? biodata?.permanentDivision : ""
+          }
           {...register("permanentDivision")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -203,7 +231,9 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
           Present Division name
         </label>
         <select
-          defaultValue=""
+          defaultValue={
+            biodata?.presentDivision ? biodata?.presentDivision : ""
+          }
           {...register("presentDivision")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -228,6 +258,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         </label>
         <input
           type="number"
+          defaultValue={partnerAge}
           {...register("partnerAge")}
           required
           placeholder="Enter your partner age"
@@ -241,7 +272,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
           Expected Partner Height
         </label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.partnerHeight ? biodata?.partnerHeight : ""}
           {...register("partnerHeight")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -262,7 +293,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
           Expected Partner Weight
         </label>
         <select
-          defaultValue=""
+          defaultValue={biodata?.partnerWeight ? biodata?.partnerWeight : ""}
           {...register("partnerWeight")}
           required
           className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
@@ -296,6 +327,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
         <label className="block font-medium text-gray-700">Mobile Number</label>
         <input
           type="number"
+          defaultValue={mobileNumber}
           {...register("mobileNumber")}
           required
           placeholder="Enter your partner age"
@@ -309,7 +341,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register }) => {
           type="submit"
           className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
         >
-          Save And Publish Now
+          {biodata ? "Edit And Save Now":"Save And Publish Now"}
         </button>
       </div>
     </form>
