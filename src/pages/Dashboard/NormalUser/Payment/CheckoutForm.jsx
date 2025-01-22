@@ -1,6 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { id } = useParams();
   const stripe = useStripe();
@@ -76,6 +77,7 @@ const CheckoutForm = () => {
         };
         // save payment info to db
         await axiosSecure.post("/payment", paymentInfo);
+        navigate("/dashboard/myContactRequest");
       }
     }
   };

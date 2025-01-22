@@ -8,10 +8,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingSppiner from "../../../../components/LoadingSppiner";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const EditBiodata = () => {
   // state diclar this biodata is ediable or not
   const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -33,6 +35,7 @@ const EditBiodata = () => {
       );
       if (updateRes.modifiedCount) {
         toast.success("Your Biodata Edit Successfull !");
+        navigate("/dashboard/viewBiodata");
       }
     }
     // create a biodata to db
@@ -40,6 +43,7 @@ const EditBiodata = () => {
       const { data: res } = await axiosSecure.post("/biodata", biodata);
       if (res.insertedId) {
         toast.success("Your biodata create successfull");
+        navigate("/dashboard/viewBiodata");
       }
     }
   };
