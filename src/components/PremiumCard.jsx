@@ -19,7 +19,8 @@ const PremiumCard = ({ biodata }) => {
         {/* card content */}
         <div className="text-center md:text-left space-y-2 flex-1">
           <p className="text-2xl font-bold text-gray-700">
-            Biodata Id: <span className="text-indigo-600">1</span>
+            Biodata Id:
+            <span className="text-indigo-600 ml-3">{biodata?.biodataId}</span>
           </p>
           <p className="text-lg text-gray-600">
             Biodata Type: <span className="font-medium">{biodataType}</span>

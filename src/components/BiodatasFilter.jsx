@@ -1,6 +1,6 @@
 import React from "react";
 
-const BiodatasFilter = () => {
+const BiodatasFilter = ({ setAge, setBiodataType, setPermanentDivision }) => {
   return (
     <div>
       {/* Filter Section */}
@@ -11,7 +11,8 @@ const BiodatasFilter = () => {
           Filter by Age:
         </label>
         <input
-          type="range"
+          type="number"
+          onChange={(e) => setAge(e.target.value)}
           id="age-range"
           min="18"
           max="60"
@@ -22,25 +23,39 @@ const BiodatasFilter = () => {
         <label htmlFor="biodata-type" className="block mb-2">
           Biodata Type:
         </label>
-        <select id="biodata-type" className="w-full mb-4">
-          <option value="">Select Type</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+        <select
+          defaultValue=""
+          onChange={(e) => setBiodataType(e.target.value)}
+          id="biodata-type"
+          className="w-full mb-4"
+        >
+          <option value="" disabled>
+            Select Type
+          </option>
+          <option>Male</option>
+          <option>Female</option>
         </select>
 
         {/* Filter by Division */}
         <label htmlFor="division" className="block mb-2">
           Filter by Division:
         </label>
-        <select id="division" className="w-full">
-          <option value="">Select Division</option>
-          <option value="Dhaka">Dhaka</option>
-          <option value="Chattagram">Chattagram</option>
-          <option value="Rangpur">Rangpur</option>
-          <option value="Barisal">Barisal</option>
-          <option value="Khulna">Khulna</option>
-          <option value="Mymensingh">Mymensingh</option>
-          <option value="Sylhet">Sylhet</option>
+        <select
+          defaultValue=""
+          onChange={(e) => setPermanentDivision(e.target.value)}
+          id="division"
+          className="w-full"
+        >
+          <option value="" disabled>
+            Select Division
+          </option>
+          <option>Dhaka</option>
+          <option>Chattogram</option>
+          <option>Rangpur</option>
+          <option>Barisal</option>
+          <option>Khulna</option>
+          <option>Mymensingh</option>
+          <option>Sylhet</option>
         </select>
       </aside>
     </div>

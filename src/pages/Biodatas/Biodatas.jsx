@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import BiodatasFilter from "../../components/BiodatasFilter";
 import PremiumCard from "../../components/PremiumCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Biodatas = () => {
+  const [age, setAge] = useState("");
+  const [biodataType, setBiodataType] = useState("");
+  const [permanentDivision, setPermanentDivision] = useState("");
   const axiosPublic = useAxiosPublic();
   const { data: biodatas = [] } = useQuery({
-    queryKey: ["biodata"],
+    queryKey: ["biodata", age, biodataType, permanentDivision],
     queryFn: async () => {
-      const { data } = await axiosPublic("/biodata");
+      const { data } = await axiosPublic("/biodata", {
+        params: {
+          age: age || "",
+          biodataType: biodataType || "",
+          permanentDivision: permanentDivision || "",
+        },
+      });
       return data;
     },
   });
-
+  console.log({ age, permanentDivision, biodataType });
   return (
     <section className=" flex flex-col lg:flex-row gap-5">
       {/* left sider filter options */}
       <div className="lg:w-1/4 ">
-        <BiodatasFilter></BiodatasFilter>
+        <BiodatasFilter
+          setAge={setAge}
+          setBiodataType={setBiodataType}
+          setPermanentDivision={setPermanentDivision}
+        ></BiodatasFilter>
       </div>
 
       {/* write side biodatas card */}
