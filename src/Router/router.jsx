@@ -18,6 +18,7 @@ import ApprovedContactRequest from "../pages/Dashboard/Admin/ ApprovedContactReq
 import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
 import Payment from "../pages/Dashboard/NormalUser/Payment/Payment";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import GotMarried from "../pages/Dashboard/NormalUser/GotMarried/GotMarried";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
       {
         path: "favouritesBiodata",
         element: <MyFavouritesBiodata></MyFavouritesBiodata>,
+      },
+      {
+        path: "gotMarried",
+        element: <GotMarried></GotMarried>,
       },
     ],
   },

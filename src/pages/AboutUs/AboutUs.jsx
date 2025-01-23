@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import bannerImg from "../../assets/slider1.jpeg";
+import SectionTitle from "../../components/SectionTitle";
 
 const AboutUs = () => {
   return (
@@ -8,7 +9,7 @@ const AboutUs = () => {
       <div className="container mx-auto px-6 lg:px-20">
         {/* Header Section */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-gray-800">About Us</h1>
+          <SectionTitle heading={"About Us"}></SectionTitle>
           <p className="mt-4 text-lg text-gray-600">
             Building meaningful connections for a lifetime of happiness.
           </p>

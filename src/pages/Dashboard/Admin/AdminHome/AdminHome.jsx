@@ -4,17 +4,18 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { FaSackDollar } from "react-icons/fa6";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import LoadingSppiner from "../../../../components/LoadingSppiner";
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: adminStats = {} } = useQuery({
+  const { data: adminStats = {}, isLoading } = useQuery({
     queryKey: ["adminStats"],
     queryFn: async () => {
-      const { data } = await axiosSecure("/admin-dashboard");
+      const { data } = await axiosSecure("/admin-stats");
       return data;
     },
   });
-  console.log(adminStats);
+  if (isLoading) return <LoadingSppiner></LoadingSppiner>;
   return (
     <div className="my-9 mx-5">
       <h1 className="uppercase text-2xl font-semibold">Hi welcom back</h1>
