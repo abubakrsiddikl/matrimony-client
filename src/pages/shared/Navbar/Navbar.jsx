@@ -34,11 +34,13 @@ const Navbar = () => {
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
       <li>
-        {user && role === "admin" ? (
-          <NavLink to="/dashboard/adminDashboard">Dashboard</NavLink>
-        ) : (
-          <NavLink to="/dashboard/viewBiodata">Dashboard</NavLink>
-        )}
+        {user ? (
+          role === "admin" ? (
+            <NavLink to="/dashboard/adminDashboard">Dashboard</NavLink>
+          ) : (
+            <NavLink to="/dashboard/viewBiodata">Dashboard</NavLink>
+          )
+        ) : null}
       </li>
     </ul>
   );

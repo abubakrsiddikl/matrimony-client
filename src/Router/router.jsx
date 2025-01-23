@@ -17,6 +17,7 @@ import ApprovedPremium from "../pages/Dashboard/Admin/ApprovedPremium/ApprovedPr
 import ApprovedContactRequest from "../pages/Dashboard/Admin/ ApprovedContactRequest/ApprovedContactRequest";
 import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
 import Payment from "../pages/Dashboard/NormalUser/Payment/Payment";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <ContactUs></ContactUs>,
       },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
+      },
     ],
   },
   {
@@ -63,7 +68,7 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register></Register>,
   },
-  // dashboard router
+  // dashboard route
   {
     path: "/dashboard",
     element: (
