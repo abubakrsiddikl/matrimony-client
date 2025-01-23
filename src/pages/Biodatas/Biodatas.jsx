@@ -22,7 +22,7 @@ const Biodatas = () => {
       return data;
     },
   });
-  console.log({ age, permanentDivision, biodataType });
+  
   return (
     <section className=" flex flex-col lg:flex-row gap-5">
       {/* left sider filter options */}
