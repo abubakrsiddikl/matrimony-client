@@ -73,6 +73,7 @@ const CheckoutForm = () => {
           name: user?.displayName,
           biodataId: parseInt(id),
           transactionId: paymentIntent.id,
+          amount: 5,
           status: "Pending",
         };
         // save payment info to db
