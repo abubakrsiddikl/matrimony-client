@@ -43,9 +43,9 @@ const SuccessStoryAdmin = () => {
                       scope="row"
                       className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white"
                     >
-                      {story?.}
+                      {story?.selfBiodataId}
                     </td>
-                    <td className="px-6 py-4">Silver</td>
+                    <td className="px-6 py-4">{story?.partnerBiodataId}</td>
                     <td className="px-6 py-4">
                       <button className="bg-[#1C64F2] py-2 px-3 rounded-lg text-white font-semibold">
                         View Story Button
