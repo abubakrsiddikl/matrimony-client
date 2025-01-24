@@ -43,7 +43,7 @@ const SuccessStoryAdmin = () => {
                       scope="row"
                       className="px-6 py-4 font-medium  whitespace-nowrap dark:text-white"
                     >
-                      Apple MacBook Pro 17"
+                      {story?.}
                     </td>
                     <td className="px-6 py-4">Silver</td>
                     <td className="px-6 py-4">
