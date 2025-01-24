@@ -19,6 +19,8 @@ import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
 import Payment from "../pages/Dashboard/NormalUser/Payment/Payment";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import GotMarried from "../pages/Dashboard/NormalUser/GotMarried/GotMarried";
+import AdminRoute from "./AdminRoute";
+import UserRoute from "./UserRoute";
 
 const router = createBrowserRouter([
   {
@@ -81,40 +83,76 @@ const router = createBrowserRouter([
       // admin router
       {
         path: "adminDashboard",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "manage",
-        element: <ManageUser></ManageUser>,
+        element: (
+          <AdminRoute>
+            <ManageUser></ManageUser>
+          </AdminRoute>
+        ),
       },
       {
         path: "approvedPremium",
-        element: <ApprovedPremium></ApprovedPremium>,
+        element: (
+          <AdminRoute>
+            <ApprovedPremium></ApprovedPremium>
+          </AdminRoute>
+        ),
       },
       {
         path: "apporovedContactRequest",
-        element: <ApprovedContactRequest></ApprovedContactRequest>,
+        element: (
+          <AdminRoute>
+            <ApprovedContactRequest></ApprovedContactRequest>
+          </AdminRoute>
+        ),
       },
       // normal user route
       {
         path: "editBiodata",
-        element: <EditBiodata></EditBiodata>,
+        element: (
+          <UserRoute>
+            <EditBiodata></EditBiodata>
+          </UserRoute>
+        ),
       },
       {
         path: "viewBiodata",
-        element: <ViewBiodata></ViewBiodata>,
+        element: (
+          <UserRoute>
+            <ViewBiodata></ViewBiodata>
+          </UserRoute>
+        ),
       },
       {
         path: "myContactRequest",
-        element: <MyContactRequest></MyContactRequest>,
+        element: (
+          <UserRoute>
+            <MyContactRequest></MyContactRequest>
+          </UserRoute>
+        ),
       },
       {
         path: "favouritesBiodata",
-        element: <MyFavouritesBiodata></MyFavouritesBiodata>,
+        element: (
+          <UserRoute>
+            <MyFavouritesBiodata></MyFavouritesBiodata>
+          </UserRoute>
+        ),
       },
       {
         path: "gotMarried",
-        element: <GotMarried></GotMarried>,
+        element: (
+          <UserRoute>
+            <GotMarried></GotMarried>
+          </UserRoute>
+        ),
       },
     ],
   },

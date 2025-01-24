@@ -15,7 +15,6 @@ const SuccessCounter = () => {
     },
   });
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
-  console.log(counte);
   return (
     <section className="bg-gray-100 py-12">
       <div className="w-11/12 mx-auto  text-center">
