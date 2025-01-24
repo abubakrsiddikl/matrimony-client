@@ -2,7 +2,6 @@ import React from "react";
 
 const SuccessStoryCard = ({story}) => {
   const {selfBiodataId, partnerBiodataId,rating, marrigeDate,successStroy,coupleImage} = story;
-  console.log(story)
   return (
     <div>
       <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden mx-auto">

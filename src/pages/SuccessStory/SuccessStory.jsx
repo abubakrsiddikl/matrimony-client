@@ -6,16 +6,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import SuccessStoryCard from "./SuccessStoryCard";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSppiner from "../../components/LoadingSppiner";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SuccessStory = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const { data: storys = [], isLoading } = useQuery({
     queryKey: ["story"],
     queryFn: async () => {
-      const { data } = await axiosSecure("/success-story");
+      const { data } = await axiosPublic("/success-story");
       return data;
     },
   });
