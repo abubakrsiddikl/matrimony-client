@@ -1,31 +1,45 @@
-# Matrimony Project 
+# Matrimony Platform
 
-Welcome to the **Matrimony Project**! This repository contains the client-side code for a modern, feature-rich matrimony web application. Built with cutting-edge technologies, this platform ensures seamless user experience and functionality.
+## Overview
+
+This project is a Matrimony platform built using the MERN stack (MongoDB, Express, React, Tailwind, Flowbite). The platform enables users to connect with potential life partners in an intuitive and user-friendly environment. Users can create biodata, upload images, share success stories, and more.
 
 ---
 
-## 🚀 Features
+## Features
 
-- **Authentication & Authorization**:
+- User Registration and Authentication (Login/Signup)
+- Biodata Creation and Editing
+- Search and Filter for Potential Matches
+- Success Stories Section
+- File Uploads for Images
+- Admin Dashboard for Managing Data
+- Responsive Design using Tailwind CSS and Flowbite
 
-  - Secure JWT-based login system.
-  - Role-based access control for managing different user permissions.
+---
 
-- **Interactive UI**:
+## Tech Stack
 
-  - Tailwind CSS & Flowbite for responsive, beautiful, and dynamic components.
-  - User-friendly forms with validation powered by React Hook Form.
+### Frontend
 
-- **Efficient Data Handling**:
+- React.js
+- Tailwind CSS
+- Flowbite
 
-  - Integrated with TanStack Query for state management and efficient server data fetching.
-  - Fast, real-time updates with optimized API calls.
+### Backend
 
-- **Customizable Biodata**:
+- Express.js
 
-  - Create and edit detailed user biodata.
-  - Dynamic fields for tailoring biodata to user needs.
+### Database
 
-- **Modern Design**:
-  - Fully responsive interface suitable for all devices.
-  - Clean, minimalistic, and professional design.
+- MongoDB (without Mongoose)
+
+### Tools/Libraries
+
+- TanStack Query (for data fetching)
+- JWT Authentication (HTTP-only cookies for security)
+- FormData API for file uploads
+
+---
+
+
