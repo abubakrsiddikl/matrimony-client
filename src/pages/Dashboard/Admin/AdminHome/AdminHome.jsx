@@ -78,7 +78,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div>
-        <PieChartAdmin></PieChartAdmin>
+        <PieChartAdmin chartData={adminStats}></PieChartAdmin>
       </div>
     </div>
   );
