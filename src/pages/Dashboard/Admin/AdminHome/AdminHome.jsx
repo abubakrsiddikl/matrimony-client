@@ -6,6 +6,8 @@ import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSppiner from "../../../../components/LoadingSppiner";
 
+import PieChartAdmin from "./PieChartAdmin";
+
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
   const { data: adminStats = {}, isLoading } = useQuery({
@@ -74,6 +76,9 @@ const AdminHome = () => {
             <p className="text-2xl">Premium Biodata</p>
           </div>
         </div>
+      </div>
+      <div>
+        <PieChartAdmin></PieChartAdmin>
       </div>
     </div>
   );
