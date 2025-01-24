@@ -98,10 +98,13 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           <option value="" disabled>
             Select height
           </option>
-          <option>5.3</option>
-          <option>5.4</option>
-          <option>4.3</option>
-          <option>4.7</option>
+          <option value="6.1">6.1 inch</option>
+          <option value="5.9">5.9 inch</option>
+          <option value="5.3">5.3 inch</option>
+          <option value="5.7">5.7 inch</option>
+          <option value="5.4">5.4 inch</option>
+          <option value="4.3">4.3 inch</option>
+          <option value="4.7">4.7 inch</option>
         </select>
       </div>
 
@@ -117,10 +120,10 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           <option value="" disabled>
             Select weight
           </option>
-          <option>40</option>
-          <option>50</option>
-          <option>60</option>
-          <option>45</option>
+          <option value="40">40 kg</option>
+          <option value="50">50 kg</option>
+          <option value="60">60 kg</option>
+          <option value="45">45 kg</option>
         </select>
       </div>
 
@@ -280,10 +283,13 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           <option value="" disabled>
             Select height
           </option>
-          <option>5.3</option>
-          <option>5.4</option>
-          <option>4.3</option>
-          <option>4.7</option>
+          <option value="6.1">6.1 inch</option>
+          <option value="5.9">5.9 inch</option>
+          <option value="5.3">5.3 inch</option>
+          <option value="5.7">5.7 inch</option>
+          <option value="5.4">5.4 inch</option>
+          <option value="4.3">4.3 inch</option>
+          <option value="4.7">4.7 inch</option>
         </select>
       </div>
 
@@ -301,10 +307,10 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           <option value="" disabled>
             Select weight
           </option>
-          <option>40</option>
-          <option>50</option>
-          <option>60</option>
-          <option>45</option>
+          <option value="40">40 kg</option>
+          <option value="50">50 kg</option>
+          <option value="60">60 kg</option>
+          <option value="45">45 kg</option>
         </select>
       </div>
 
@@ -341,7 +347,7 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           type="submit"
           className="w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
         >
-          {biodata ? "Edit And Save Now":"Save And Publish Now"}
+          {biodata ? "Edit And Save Now" : "Save And Publish Now"}
         </button>
       </div>
     </form>
