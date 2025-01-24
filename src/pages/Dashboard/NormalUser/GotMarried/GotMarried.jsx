@@ -1,6 +1,10 @@
 import React from "react";
 import { imageUpload } from "../../../../utility/utility";
 import { useForm } from "react-hook-form";
+import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
+import useAuth from "../../../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const GotMarried = () => {
   const {
@@ -8,11 +12,21 @@ const GotMarried = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     const coupleImage = await imageUpload(data.coupleImage[0]);
-    const successData = { ...data, coupleImage };
-    console.log(successData)
+    const successStroy = { ...data, coupleImage, email: user?.email };
+    const { data: story } = await axiosSecure.post(
+      "/success-story",
+      successStroy
+    );
+    if (story.insertedId) {
+      toast.success("Your story saved successfully .");
+      navigate("/")
+    }
   };
 
   return (
@@ -72,6 +86,22 @@ const GotMarried = () => {
           />
         </div>
 
+         {/* marige date Input */}
+         <div>
+          <label
+            htmlFor="marrige"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Marrige Date
+          </label>
+          <input
+            type="date"
+            {...register("marrigeDate")}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+
         {/* Message Textarea */}
         <div>
           <label
@@ -87,6 +117,23 @@ const GotMarried = () => {
             placeholder="Write your message here"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
           ></textarea>
+        </div>
+
+        {/* rating Input */}
+        <div>
+          <label
+            htmlFor="partner"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Rating
+          </label>
+          <input
+            type="text"
+            {...register("rating")}
+            required
+            placeholder="Plese Review Rating"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+          />
         </div>
 
         {/* Submit Button */}

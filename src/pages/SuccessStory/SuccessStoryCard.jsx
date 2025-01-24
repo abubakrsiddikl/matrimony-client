@@ -1,12 +1,14 @@
 import React from "react";
 
-const SuccessStoryCard = () => {
+const SuccessStoryCard = ({story}) => {
+  const {selfBiodataId, partnerBiodataId,rating, marrigeDate,successStroy,coupleImage} = story;
+  console.log(story)
   return (
     <div>
       <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden mx-auto">
         {/* Couple Image */}
         <img
-          src="https://via.placeholder.com/150"
+          src={coupleImage}
           alt="Couple"
           className="w-full h-40 object-cover"
         />
@@ -15,7 +17,7 @@ const SuccessStoryCard = () => {
         <div className="p-6">
           {/* Marriage Date */}
           <p className="text-gray-500 text-sm mb-2">
-            Marriage Date: <span className="font-semibold">20-12-2024</span>
+            Marriage Date: <span className="font-semibold">{marrigeDate}</span>
           </p>
 
           {/*  Stars */}
@@ -39,13 +41,12 @@ const SuccessStoryCard = () => {
             >
               <path d="M12 17.27l6.18 4.02-4.64-7.56L21 9.73h-8.36L12 2 9.36 9.73H1l7.46 4.02-4.64 7.56L12 17.27z" />
             </svg>
-            <span className="ml-2 text-gray-600">(4.5 stars)</span>
+            <span className="ml-2 text-gray-600">({rating})</span>
           </div>
 
           {/* Success Story Text */}
           <p className="text-gray-700">
-            "We are forever grateful to this platform for helping us find each
-            other. It was truly a life-changing experience."
+            {successStroy}
           </p>
         </div>
       </div>
