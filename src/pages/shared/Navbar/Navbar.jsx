@@ -62,11 +62,18 @@ const Navbar = () => {
             Log Out
           </Button>
         ) : (
-          <NavLink to="/login">
-            <Button variant="contained" color="primary">
-              Login
-            </Button>
-          </NavLink>
+          <>
+            <NavLink to="/login">
+              <Button variant="contained" color="primary">
+                Login
+              </Button>
+            </NavLink>
+            <NavLink to="/register" className="ml-2">
+              <button className="bg-black py-2 px-3 rounded-[8px] text-white font-bold">
+                Register
+              </button>
+            </NavLink>
+          </>
         )}
       </div>
 
