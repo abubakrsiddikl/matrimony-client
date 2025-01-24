@@ -10,13 +10,13 @@ const PieChartAdmin = ({ chartData }) => {
     totalPremiumBiodata,
   } = chartData;
   const data = [
-    { name: "revenue", value: revenue },
-    { name: "totalBiodata", value: totalBiodata },
-    { name: "totalFemaleBiodata", value: totalFemaleBiodata },
-    { name: "totalMaleBiodata", value: totalMaleBiodata },
-    { name: "totalPremiumBiodata", value: totalPremiumBiodata },
+    { name: "Revenue", value: revenue },
+    { name: "Total Biodata", value: totalBiodata },
+    { name: "Total Female Biodata", value: totalFemaleBiodata },
+    { name: "Total Male Biodata", value: totalMaleBiodata },
+    { name: "Total Premium Biodata", value: totalPremiumBiodata },
   ];
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red"];
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
     cx,
