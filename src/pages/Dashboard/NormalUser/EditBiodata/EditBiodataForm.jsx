@@ -155,6 +155,8 @@ const EditBiodataForm = ({ handleSubmit, onSubmit, register, biodata }) => {
           <option>Doctor</option>
           <option>Engineer</option>
           <option>Teacher</option>
+          <option>Student</option>
+          <option>Not Work</option>
         </select>
       </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AdminMenu from "../../components/AdminMenu";
 import NormalUserMenu from "../../components/NormalUserMenu";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { CiTextAlignJustify } from "react-icons/ci";
@@ -12,11 +12,13 @@ const Dashboard = () => {
   const { logOut } = useAuth();
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { role, isLoading } = useRole();
+  const navigate = useNavigate();
 
   // handle logout
   const handleLogOut = () => {
     logOut();
     toast.success("You are logged out!");
+    navigate("/")
   };
 
   // toggle navigation menu

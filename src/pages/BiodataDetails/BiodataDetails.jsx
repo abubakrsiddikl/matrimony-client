@@ -41,16 +41,18 @@ const BiodataDetails = () => {
       <div className=" flex flex-col items-center gap-5 md:flex-row md:justify-start md:items-center md:px-20">
         {/* Profile Picture */}
         <img
-          src="https://i.ibb.co/SRJ5dPV/myprofile.jpg"
+          src={biodata?.image}
           className="w-36 h-36  shadow-lg"
           alt="Profile"
         />
         {/* Name and ID */}
         <div className="text-center md:text-left">
           <p className="text-2xl font-bold text-gray-800">
-            Name: <span className="text-gray-500">Md Limon</span>
+            Name: <span className="text-gray-500">{biodata?.name}</span>
           </p>
-          <p className="text-xl font-medium text-gray-700">ID: 01234</p>
+          <p className="text-xl font-medium text-gray-700">
+            ID: {biodata?.biodataId}
+          </p>
           <p className="text-xl font-medium text-gray-700">
             Biodata Type: {biodata.biodataType}
           </p>

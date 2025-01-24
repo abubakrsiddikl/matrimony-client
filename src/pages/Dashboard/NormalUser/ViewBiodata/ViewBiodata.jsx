@@ -73,7 +73,7 @@ const ViewBiodata = () => {
             {/* Name and ID */}
             <div className="text-center md:text-left">
               <p className="text-2xl font-bold text-gray-800">
-                Name: <span className="text-gray-500">Md Limon</span>
+                Name: <span className="text-gray-500">{biodata?.name}</span>
               </p>
               <p className="text-xl font-medium text-gray-700">
                 ID: {biodata?.biodataId}

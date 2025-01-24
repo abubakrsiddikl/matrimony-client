@@ -14,7 +14,7 @@ const BiodatasFilter = ({ setAge, setBiodataType, setPermanentDivision }) => {
           type="number"
           onChange={(e) => setAge(e.target.value)}
           id="age-range"
-          min="18"
+          min="15"
           max="60"
           className="w-full mb-4"
         />
