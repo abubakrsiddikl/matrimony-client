@@ -29,7 +29,7 @@ const ManageUser = () => {
   });
 
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
-  console.log(users);
+  // console.log(users);
   const handleMakeAdmin = async (id, name) => {
     const { data } = await axiosSecure.patch(`/user/role/admin/${id}`);
     refetch();

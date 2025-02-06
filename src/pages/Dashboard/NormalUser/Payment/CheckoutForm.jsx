@@ -41,10 +41,10 @@ const CheckoutForm = () => {
       card,
     });
     if (error) {
-      console.log("error", error);
+      // console.log("error", error);
       setErr(error.message);
     } else {
-      console.log("payment method", paymentMethod);
+      // console.log("payment method", paymentMethod);
       setErr("");
     }
     // create payment confirme
@@ -62,7 +62,7 @@ const CheckoutForm = () => {
       // console.log("confirm error", confirmError);
       toast.error(confirmError.message);
     } else {
-      console.log("paymentIntent", paymentIntent);
+      // console.log("paymentIntent", paymentIntent);
       if (paymentIntent?.status === "succeeded") {
         toast.success(
           `You have successfully payment. Please waite admin confirmaition !`

@@ -4,7 +4,7 @@ import axios from "axios";
 
 // imageUpload to image bb
 export const imageUpload = async (imageData) => {
-  console.log(import.meta.env.VITE_IMAGE_API_KEY);
+  // console.log(import.meta.env.VITE_IMAGE_API_KEY);
   const formData = new FormData();
   formData.append("image", imageData);
   const { data } = await axios.post(

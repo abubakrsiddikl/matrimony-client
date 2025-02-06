@@ -26,14 +26,14 @@ const BiodataDetails = () => {
     // add to favourties to save db
     try {
       const { data } = await axiosSecure.post("/favourites-biodata", userData);
-      console.log(data);
+      
       if (data.insertedId) {
         toast.success(
           `${biodata?.biodataId} This ID add to fovourties successfull.`
         );
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   return (

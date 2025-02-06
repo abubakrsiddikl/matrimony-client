@@ -29,7 +29,7 @@ const ApprovedContactRequest = () => {
     refetch();
     if (data.modifiedCount > 0)
       return toast.success(`${biodataId} this biodata has approved !`);
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div>

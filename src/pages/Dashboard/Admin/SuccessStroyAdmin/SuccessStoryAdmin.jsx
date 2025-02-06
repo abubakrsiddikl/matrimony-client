@@ -12,7 +12,7 @@ const SuccessStoryAdmin = () => {
       return data;
     },
   });
-  console.log(stories);
+  // console.log(stories);
   return (
     <div>
       <div className=" overflow-x-auto w-full shadow-md sm:rounded-lg">

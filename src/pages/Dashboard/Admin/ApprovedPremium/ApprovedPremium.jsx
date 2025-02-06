@@ -26,7 +26,7 @@ const ApprovedPremium = () => {
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
   // handle make premium to biodata
   const handleMakePremium = async (id, name) => {
-    console.log(id);
+    // console.log(id);
     const { data } = await axiosSecure.patch(
       `/biodata-premium/approved/${user?.email}`,
       {
