@@ -1,5 +1,7 @@
 # Matrimony Platform
 
+![Lost & Found Screenshot](https://i.ibb.co.com/0y71gQVG/Screenshot-from-2025-02-06-23-08-01.png)  
+
 ## Project Overview
 
 The Matrimony Platform is a matchmaking web application built using the MERN stack (MongoDB, Express, React, Node.js). It offers a modern, user-friendly interface that helps users connect with potential life partners. Core functionalities include biodata creation, success story sharing, secure authentication, and powerful search and filter options.
