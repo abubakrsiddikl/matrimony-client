@@ -22,6 +22,7 @@ import GotMarried from "../pages/Dashboard/NormalUser/GotMarried/GotMarried";
 import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import SuccessStoryAdmin from "../pages/Dashboard/Admin/SuccessStroyAdmin/SuccessStoryAdmin";
+import AddTestimonials from "../pages/Dashboard/NormalUser/AddTestimonials./AddTestimonials";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://matrimony-final-server.vercel.app/biodata/details/${params.id}`),
+          fetch(
+            `https://matrimony-final-server.vercel.app/biodata/details/${params.id}`
+          ),
       },
       {
         path: "/payment/:id",
@@ -152,6 +155,14 @@ const router = createBrowserRouter([
         element: (
           <UserRoute>
             <MyFavouritesBiodata></MyFavouritesBiodata>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "testimonials",
+        element: (
+          <UserRoute>
+            <AddTestimonials></AddTestimonials>
           </UserRoute>
         ),
       },

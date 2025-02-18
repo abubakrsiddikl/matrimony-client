@@ -7,6 +7,7 @@ const NormalUserMenu = ({ handleLogOut }) => {
       <NavLink to="/dashboard/viewBiodata">View Biodata</NavLink>
       <NavLink to="/dashboard/myContactRequest">My Contact Request</NavLink>
       <NavLink to="/dashboard/favouritesBiodata">Favourites Biodata</NavLink>
+      <NavLink to="/dashboard/testimonials">Reviws</NavLink>
       <NavLink to="/dashboard/gotMarried">Got Married</NavLink>
       <Link
         onClick={handleLogOut}

@@ -27,31 +27,16 @@ const SuccessStory = () => {
       <div className="w-11/12 mx-auto">
         {/* swiper card */}
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
-          centeredSlides={true}
-          pagination={{
-            clickable: true,
-          }}
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-
-            640: {
-              slidesPerView: 2,
-            },
-
-            768: {
-              slidesPerView: 3,
-            },
-
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
           modules={[Pagination]}
-          className="mySwiper"
+          slidesPerView={1}
+          spaceBetween={20}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000 }}
+          className="pb-10"
         >
           {storys.map((story, idx) => (
             <SwiperSlide key={idx}>
