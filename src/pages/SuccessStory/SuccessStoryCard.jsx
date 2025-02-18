@@ -4,7 +4,7 @@ const SuccessStoryCard = ({story}) => {
   const {selfBiodataId, partnerBiodataId,rating, marrigeDate,successStroy,coupleImage} = story;
   return (
     <div>
-      <div className="w-full bg-white shadow-lg rounded-lg overflow-hidden mx-auto">
+      <div className="w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
         {/* Couple Image */}
         <img
           src={coupleImage}
