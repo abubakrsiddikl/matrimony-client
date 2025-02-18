@@ -64,7 +64,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="mt-10 relative">
+    <div className=" relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

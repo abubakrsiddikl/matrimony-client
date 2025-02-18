@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { User, MapPin, Calendar, Briefcase } from "lucide-react";
 
 const PremiumCard = ({ biodata }) => {
-  const { _id, biodataType, permanentDivision, age, occupation, image } =
-    biodata;
+  const {
+    _id,
+    biodataType,
+    biodataId,
+    permanentDivision,
+    age,
+    occupation,
+    image,
+  } = biodata;
   return (
     <div className=" ">
       {/* card 1 */}
@@ -37,13 +45,14 @@ const PremiumCard = ({ biodata }) => {
           </p>
           {/* button*/}
           <Link to={`/biodata/details/${_id}`}>
-            <button className="mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-full shadow hover:bg-indigo-700 transition duration-300">
+            <button className="mt-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out flex items-center gap-2">
               View Profile
             </button>
           </Link>
         </div>
       </div>
     </div>
+    
   );
 };
 

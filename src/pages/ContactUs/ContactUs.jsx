@@ -5,7 +5,7 @@ const ContactUs = () => {
     e.preventDefault();
   };
   return (
-    <div className="mt-3 min-h-screen bg-gray-100 flex flex-col items-center justify-center py-10">
+    <div className=" min-h-screen bg-gray-100 flex flex-col items-center justify-center py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Contact Us</h1>
       <p className="text-lg text-gray-600 mb-8 text-center max-w-md">
         We'd love to hear from you! Please fill out the form below, and our team
