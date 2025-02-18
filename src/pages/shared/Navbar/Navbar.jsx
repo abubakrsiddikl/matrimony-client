@@ -46,54 +46,108 @@ const Navbar = () => {
   );
 
   return (
-    <div className="mt-6 flex justify-between items-center px-4 lg:px-10">
-      <div className="flex justify-center items-center gap-3 text-2xl font-bold text-blue-900">
-        <img src={logo} className="w-10 h-10" alt="" />
-        <p>Life Union</p>
-      </div>
+    // <div className="mt-6 flex justify-between items-center px-4 lg:px-10 sticky z-50 top-0 bg-white">
+    //   <div className="flex justify-center items-center gap-3 text-2xl font-bold text-blue-900">
+    //     <img src={logo} className="w-10 h-10" alt="" />
+    //     <p>Life Union</p>
+    //   </div>
 
-      {/* link hidden on small screens */}
-      <div className="hidden lg:flex">{links}</div>
+    //   {/* link hidden on small screens */}
+    //   <div className="hidden lg:flex">{links}</div>
 
-      {/* Login Button */}
-      <div className="hidden lg:block">
-        {user ? (
-          <Button onClick={handleLogOut} variant="contained" color="primary">
-            Log Out
-          </Button>
-        ) : (
-          <>
-            <NavLink to="/login">
-              <Button variant="contained" color="primary">
-                Login
-              </Button>
-            </NavLink>
-            <NavLink to="/register" className="ml-2">
-              <button className="bg-black py-2 px-3 rounded-[8px] text-white font-bold">
-                Register
-              </button>
-            </NavLink>
-          </>
-        )}
-      </div>
+    //   {/* Login Button */}
+    //   <div className="hidden lg:block">
+    //     {user ? (
+    //       <Button onClick={handleLogOut} variant="contained" color="primary">
+    //         Log Out
+    //       </Button>
+    //     ) : (
+    //       <>
+    //         <NavLink to="/login">
+    //           <Button variant="contained" color="primary">
+    //             Login
+    //           </Button>
+    //         </NavLink>
+    //         <NavLink to="/register" className="ml-2">
+    //           <button className="bg-black py-2 px-3 rounded-[8px] text-white font-bold">
+    //             Register
+    //           </button>
+    //         </NavLink>
+    //       </>
+    //     )}
+    //   </div>
 
-      {/* icon md divice */}
-      <div className="lg:hidden">
-        <button
-          onClick={() => setDropdown(!dropdown)}
-          className="text-blue-900 focus:outline-none"
-        >
-          {dropdown ? (
-            <TfiLayoutMenuV className="text-2xl" />
+    //   {/* icon md divice */}
+    //   <div className="lg:hidden">
+    //     <button
+    //       onClick={() => setDropdown(!dropdown)}
+    //       className="text-blue-900 focus:outline-none"
+    //     >
+    //       {dropdown ? (
+    //         <TfiLayoutMenuV className="text-2xl" />
+    //       ) : (
+    //         <VscMenu className="text-2xl" />
+    //       )}
+    //     </button>
+    //   </div>
+
+    //   {/* dropdown mobile divice */}
+    //   {dropdown && (
+    //     <div className="z-50 py-3 absolute top-14 right-0 w-full bg-[#D1A054] lg:hidden">
+    //       {links}
+    //     </div>
+    //   )}
+    // </div>
+    <div className="sticky top-0 left-0 w-full z-50 bg-gray-300 shadow-sm">
+      <div className="py-3 flex justify-between items-center px-4 lg:px-10">
+        <div className="flex justify-center items-center gap-3 text-2xl font-bold text-blue-900">
+          <img src={logo} className="w-10 h-10" alt="" />
+          <p>Life Union</p>
+        </div>
+
+        {/* link hidden on small screens */}
+        <div className="hidden lg:flex">{links}</div>
+
+        {/* Login Button */}
+        <div className="hidden lg:block">
+          {user ? (
+            <Button onClick={handleLogOut} variant="contained" color="primary">
+              Log Out
+            </Button>
           ) : (
-            <VscMenu className="text-2xl" />
+            <>
+              <NavLink to="/login">
+                <Button variant="contained" color="primary">
+                  Login
+                </Button>
+              </NavLink>
+              <NavLink to="/register" className="ml-2">
+                <button className="bg-black py-2 px-3 rounded-[8px] text-white font-bold">
+                  Register
+                </button>
+              </NavLink>
+            </>
           )}
-        </button>
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="lg:hidden">
+          <button
+            onClick={() => setDropdown(!dropdown)}
+            className="text-blue-900 focus:outline-none"
+          >
+            {dropdown ? (
+              <TfiLayoutMenuV className="text-2xl" />
+            ) : (
+              <VscMenu className="text-2xl" />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* dropdown mobile divice */}
+      {/* Mobile dropdown */}
       {dropdown && (
-        <div className="z-50 py-3 absolute top-14 right-0 w-full bg-[#D1A054] lg:hidden">
+        <div className="z-50 py-3 absolute top-[100%] right-0 w-full bg-[#D1A054] lg:hidden">
           {links}
         </div>
       )}

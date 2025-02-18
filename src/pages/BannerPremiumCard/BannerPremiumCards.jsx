@@ -34,8 +34,8 @@ const BannerPremiumCards = () => {
     setSortedBiodatas(sortedData);
   };
   return (
-    <div>
-      <SectionTitle heading="Biodata Premium "></SectionTitle>
+    <div className="w-11/12 mx-auto">
+      <h1 className="mt-7 mb-5 text-3xl text-center font-bold">Biodata Premium</h1>
       <p className="text-2xl font-bold  mt-3">
         Sort By Age :
         <select className="ml-3" onChange={(e) => handleSort(e.target.value)}>
@@ -44,7 +44,7 @@ const BannerPremiumCards = () => {
         </select>
       </p>
       {/* card design */}
-      <div className="w-11/12 mx-auto grid grid-cols-1 my-10 md:grid-cols-2 gap-3">
+      <div className=" grid grid-cols-1 my-10 md:grid-cols-2 gap-3">
         {sortedBiodatas.map((biodata) => (
           <PremiumCard key={biodata._id} biodata={biodata}></PremiumCard>
         ))}
