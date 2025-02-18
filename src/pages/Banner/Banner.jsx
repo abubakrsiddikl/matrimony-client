@@ -124,6 +124,7 @@ import slider3 from "../../assets/slider3.jpeg";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -151,9 +152,11 @@ const Banner = () => {
               <h2 className="text-white text-2xl md:text-5xl font-bold leading-tight">
                 "Where Hearts Meet, <br /> Love Begins."
               </h2>
+              <Link to={"/login"}>
               <button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
                 Join Now
               </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -166,9 +169,11 @@ const Banner = () => {
               <h2 className="text-white text-2xl md:text-5xl font-bold leading-tight">
                 "Find Your Perfect Match <br /> for a Lifetime of Love."
               </h2>
+              <Link to={"/register"}>
               <button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
                 Get Started
               </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -181,9 +186,11 @@ const Banner = () => {
               <h2 className="text-white text-2xl md:text-5xl font-bold leading-tight">
                 "Serious Matches for <br /> Meaningful Relationships."
               </h2>
-              <button className="mt-4 bg-pink-600s hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
+              <Link to={"/biodata"}>
+              <button className="mt-4 bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">
                 Find Your Match
               </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
