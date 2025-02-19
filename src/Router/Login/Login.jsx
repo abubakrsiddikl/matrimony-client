@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import SocialLogin from "../../pages/shared/SocialLogin/SocialLogin";
+import { ChevronLeft } from "lucide-react";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -26,8 +27,8 @@ const Login = () => {
   };
   const fillDemoCredentials = (role) => {
     const credentials = {
-      user: { email: "test@gmail.com", password: "Test1234@" },
-      premium: { email: "test@gmail.com", password: "Test1234@" },
+      user: { email: "user@gmail.com", password: "Test1234@" },
+      premium: { email: "premium@gmail.com", password: "Test1234@" },
       admin: { email: "admin@gmail.com", password: "Admin1234@" },
     };
     setValue("email", credentials[role].email);
@@ -37,7 +38,17 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-5">
       <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-md">
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
-          <h1 className="text-center text-3xl font-bold text-gray-800 mb-6">
+          <Link to="/">
+            <button
+              type="button"
+              className=" bg-blue-600 p-2 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all flex items-center"
+            >
+              <ChevronLeft />
+              Back to Home
+            </button>
+          </Link>
+
+          <h1 className="text-center text-3xl font-bold text-gray-800 mt-2">
             Please Login!
           </h1>
 
