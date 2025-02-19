@@ -23,6 +23,9 @@ import AdminRoute from "./AdminRoute";
 import UserRoute from "./UserRoute";
 import SuccessStoryAdmin from "../pages/Dashboard/Admin/SuccessStroyAdmin/SuccessStoryAdmin";
 import AddTestimonials from "../pages/Dashboard/NormalUser/AddTestimonials./AddTestimonials";
+import Profile from "../pages/Dashboard/shared/AdminProfile";
+import AdminProfile from "../pages/Dashboard/shared/AdminProfile";
+import UserProfile from "../pages/Dashboard/shared/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -121,12 +124,28 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "profile",
+        element: (
+          <AdminRoute>
+            <AdminProfile></AdminProfile>
+          </AdminRoute>
+        ),
+      },
       // normal user route
       {
         path: "editBiodata",
         element: (
           <UserRoute>
             <EditBiodata></EditBiodata>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "profileUser",
+        element: (
+          <UserRoute>
+            <UserProfile></UserProfile>
           </UserRoute>
         ),
       },

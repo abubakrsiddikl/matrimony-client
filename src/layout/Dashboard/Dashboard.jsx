@@ -18,7 +18,7 @@ const Dashboard = () => {
   const handleLogOut = () => {
     logOut();
     toast.success("You are logged out!");
-    navigate("/")
+    navigate("/");
   };
 
   // toggle navigation menu
@@ -27,12 +27,12 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="block lg:flex h-full lg:min-h-screen">
-      {/* Left side navigation */}
+    <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+      {/* Left Side Navigation */}
       <div
-        className={`bg-[#D1A054] p-5  flex flex-col fixed top-0 left-0  z-50 transition-transform duration-300 ${
-          isNavOpen ? "translate-x-0 " : "-translate-x-full"
-        } overflow-auto  md:translate-x-0 md:static md:flex md:w-1/4 lg:w-1/5`}
+        className={`bg-[#D1A054] shadow-md p-5 flex flex-col fixed top-0 left-0 h-full min-h-screen z-50 transition-transform duration-300 ${
+          isNavOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:static md:flex md:w-1/4 lg:w-1/5 overflow-y-auto`}
       >
         {/* Logo */}
         <Link to="/" className="mb-5">
@@ -44,36 +44,33 @@ const Dashboard = () => {
         </Link>
 
         {/* Admin Menu */}
-        {role === "admin" && (
-          <AdminMenu handleLogOut={handleLogOut}></AdminMenu>
-        )}
+        {role === "admin" && <AdminMenu handleLogOut={handleLogOut} />}
 
         {/* Normal User Menu */}
         {(role === "normal" || role === "premium") && (
-          <NormalUserMenu handleLogOut={handleLogOut}></NormalUserMenu>
+          <NormalUserMenu handleLogOut={handleLogOut} />
         )}
       </div>
 
       {/* Toggle Button for Mobile */}
       <button
         onClick={toggleNav}
-        className="md:hidden fixed right-0 top-5  z-50 bg-[#D1A054] text-white p-2 rounded-lg"
+        className="md:hidden fixed right-5 top-5 z-50 bg-[#D1A054] text-white p-3 rounded-full shadow-md hover:bg-[#b5863e] transition-all"
       >
         {isNavOpen ? (
           <p className="flex justify-center items-center gap-2">
-            Menu <IoClose />
+            Close <IoClose />
           </p>
         ) : (
           <p className="flex justify-center items-center gap-2">
-            Menu
-            <CiTextAlignJustify />
+            Menu <CiTextAlignJustify />
           </p>
         )}
       </button>
 
-      {/* Right side content */}
-      <div className="flex-1 ">
-        <Outlet></Outlet>
+      {/* Right Side Content */}
+      <div className="flex-1 overflow-y-auto bg-gray-50 min-h-screen">
+        <Outlet />
       </div>
     </div>
   );

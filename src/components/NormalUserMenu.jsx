@@ -9,6 +9,7 @@ const NormalUserMenu = ({ handleLogOut }) => {
       <NavLink to="/dashboard/favouritesBiodata">Favourites Biodata</NavLink>
       <NavLink to="/dashboard/testimonials">Reviws</NavLink>
       <NavLink to="/dashboard/gotMarried">Got Married</NavLink>
+      <NavLink to="/dashboard/profileUser">Profile</NavLink>
       <Link
         onClick={handleLogOut}
         className="hover:cursor-pointer hover:bg-black hover:text-white hover:p-2 hover:font-bold rounded-lg"

@@ -22,11 +22,11 @@ const Biodatas = () => {
       return data;
     },
   });
-  
+
   return (
-    <section className=" flex flex-col lg:flex-row gap-5">
+    <section className=" w-11/12 mx-auto">
       {/* left sider filter options */}
-      <div className="lg:w-1/4 ">
+      <div>
         <BiodatasFilter
           setAge={setAge}
           setBiodataType={setBiodataType}
@@ -35,7 +35,7 @@ const Biodatas = () => {
       </div>
 
       {/* write side biodatas card */}
-      <div className="w-11/12 mx-auto lg:w-full grid grid-cols-1 my-10 md:grid-cols-2 gap-3">
+      <div className="w-11/12 mx-auto lg:w-full grid grid-cols-1 my-10 md:grid-cols-2 gap-3 overflow-y-auto">
         {biodatas.map((biodata) => (
           <PremiumCard key={biodata._id} biodata={biodata}></PremiumCard>
         ))}

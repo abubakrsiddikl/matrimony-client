@@ -11,6 +11,7 @@ const AdminMenu = ({ handleLogOut }) => {
         Approved Contact Request
       </NavLink>
       <NavLink to="/dashboard/successStoryAdmin">Success Story</NavLink>
+      <NavLink to="/dashboard/profile">Profile</NavLink>
       <Link onClick={handleLogOut}>Logout</Link>
     </div>
   );
