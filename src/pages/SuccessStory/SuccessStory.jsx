@@ -22,7 +22,7 @@ const SuccessStory = () => {
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
 
   return (
-    <section className="bg-gray-50 py-10 ">
+    <section className="bg-gray-100  ">
       <SectionTitle heading="Success Stories"></SectionTitle>
       <div className="w-11/12 mx-auto">
         {/* swiper card */}

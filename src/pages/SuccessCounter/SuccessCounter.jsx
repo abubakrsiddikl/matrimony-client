@@ -16,7 +16,7 @@ const SuccessCounter = () => {
   });
   if (isLoading) return <LoadingSppiner></LoadingSppiner>;
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-100 pt-8 pb-12 ">
       <div className="w-11/12 mx-auto  text-center">
         <SectionTitle heading="Success Counter"></SectionTitle>
         <p className="text-gray-600 mb-8">

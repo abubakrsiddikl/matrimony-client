@@ -20,9 +20,11 @@ const Testimonials = () => {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <section className="bg-gray-100 py-10">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">User Testimonials</h2>
+    <section className="bg-gray-100 ">
+      <div className="w-11/12 mx-auto pt-7">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          User Testimonials
+        </h2>
 
         <Swiper
           modules={[Pagination, Autoplay]}
@@ -38,13 +40,15 @@ const Testimonials = () => {
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial._id}>
-              <div className="bg-white p-6 rounded-2xl shadow-md text-center">
+              <div className="bg-white p-6 rounded-lg shadow-md text-center">
                 <img
                   src={testimonial.photoURL}
                   alt={testimonial.name}
                   className="w-20 h-20 mx-auto rounded-full border-2 border-indigo-500"
                 />
-                <h3 className="text-lg font-semibold mt-3">{testimonial.name}</h3>
+                <h3 className="text-lg font-semibold mt-3">
+                  {testimonial.name}
+                </h3>
                 <div className="flex justify-center text-yellow-400 my-2">
                   {Array.from({ length: testimonial.rating }, (_, i) => (
                     <Star key={i} size={16} fill="currentColor" />
