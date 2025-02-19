@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
@@ -23,19 +24,28 @@ const Login = () => {
       toast.error(err.message);
     }
   };
+  const fillDemoCredentials = (role) => {
+    const credentials = {
+      user: { email: "test@gmail.com", password: "Test1234@" },
+      premium: { email: "test@gmail.com", password: "Test1234@" },
+      admin: { email: "admin@gmail.com", password: "Admin1234@" },
+    };
+    setValue("email", credentials[role].email);
+    setValue("password", credentials[role].password);
+  };
   return (
-    <div className="flex items-center justify-center h-screen w-full">
-      <div className="bg-[#F2F2F2] py-10 px-24 rounded-lg">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-5">
+      <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-md">
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
-          <h1 className="text-center text-3xl font-bold text-black mb-5">
-            Please Login !
+          <h1 className="text-center text-3xl font-bold text-gray-800 mb-6">
+            Please Login!
           </h1>
 
           {/* Email Field */}
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-lg font-medium text-gray-700"
             >
               Email
             </label>
@@ -43,7 +53,7 @@ const Login = () => {
               type="email"
               {...register("email")}
               id="email"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50"
               placeholder="Enter Your Email"
               required
             />
@@ -53,7 +63,7 @@ const Login = () => {
           <div className="mb-5">
             <label
               htmlFor="password"
-              className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-lg font-medium text-gray-700"
             >
               Password
             </label>
@@ -66,28 +76,75 @@ const Login = () => {
                 maxLength: 20,
                 pattern: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
               })}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50"
               required
             />
             {errors.password?.type === "maxLength" && (
-              <span className="text-red-500">
-                Password is must be less than 20 charcater
+              <span className="text-red-500 text-sm">
+                Password must be less than 20 characters
               </span>
             )}
             {errors.password?.type === "pattern" && (
-              <span className="text-red-500">Password should be strong</span>
+              <span className="text-red-500 text-sm">
+                Password should be strong
+              </span>
             )}
           </div>
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition-all"
           >
             Login
           </button>
         </form>
-        <SocialLogin></SocialLogin>
-        <p className="text-red-400 mt-4 text-lg">You have not Account ? <Link className="underline" to="/register">Please Register</Link></p>
+
+        {/* Demo Credentials */}
+        <div className="mt-5 text-center">
+          <p className="text-gray-600 font-medium">
+            Login with Demo Credentials:
+          </p>
+          <div className="flex gap-2 mt-3">
+            <button
+              type="button"
+              className="w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition-all"
+              onClick={() => fillDemoCredentials("user")}
+            >
+              User
+            </button>
+            <button
+              type="button"
+              className="w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition-all"
+              onClick={() => fillDemoCredentials("premium")}
+            >
+              Premium User
+            </button>
+            <button
+              type="button"
+              className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-all"
+              onClick={() => fillDemoCredentials("admin")}
+            >
+              Admin
+            </button>
+          </div>
+        </div>
+
+        {/* Social Login */}
+        <div className="mt-5">
+          <SocialLogin />
+        </div>
+
+        {/* Register Link */}
+        <p className="text-center text-gray-700 mt-5">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-blue-600 font-medium hover:underline"
+          >
+            Please Register
+          </Link>
+        </p>
       </div>
     </div>
   );
