@@ -13,7 +13,7 @@ const SslCommerzePayment = () => {
     const paymentInfo = {
       email,
       name: user?.displayName,
-      biodataId: id,
+      biodataId: parseInt(id),
       status: "Pending",
     };
     const res = await axiosSecure.post(
