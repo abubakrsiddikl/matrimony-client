@@ -8,6 +8,7 @@ const PaymentSuccess = () => {
       <h1 className="text-center">
         Your Payment Successfull TransactionId : {tranId}
       </h1>
+      Please Go to home page .
     </div>
   );
 };
