@@ -20,7 +20,8 @@ const SslCommerzePayment = () => {
       "http://localhost:5000/sslCommerze",
       paymentInfo
     );
-    console.log(res.data)
+    window.location.replace(res.data.url);
+    console.log(res.data.url);
   };
   return (
     <div>

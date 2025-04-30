@@ -26,6 +26,7 @@ import AddTestimonials from "../pages/Dashboard/NormalUser/AddTestimonials./AddT
 import Profile from "../pages/Dashboard/shared/AdminProfile";
 import AdminProfile from "../pages/Dashboard/shared/AdminProfile";
 import UserProfile from "../pages/Dashboard/shared/UserProfile";
+import PaymentSuccess from "../pages/Dashboard/NormalUser/Payment/PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             <Payment></Payment>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/payment/success/:tranId",
+        element: <PaymentSuccess></PaymentSuccess>,
       },
       {
         path: "/contact",
