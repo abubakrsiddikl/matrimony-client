@@ -158,7 +158,7 @@ const CheckoutForm = () => {
         }`}
         disabled={!stripe || !clientSecret}
       >
-        Pay Now 5$
+        Pay Now 5$ USD
       </button>
     </form>
   );

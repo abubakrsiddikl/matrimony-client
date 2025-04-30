@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
+import { TbCoinTakaFilled } from "react-icons/tb";
 
 const SslCommerzePayment = () => {
   const { user } = useAuth();
@@ -71,9 +72,9 @@ const SslCommerzePayment = () => {
           rounded-lg
           focus:outline-none
           focus:ring-2
-          focus:ring-green-600 bg-green-500 hover:bg-green-600"
+          focus:ring-green-600 bg-green-500 hover:bg-green-600 flex justify-center items-center gap-1"
         >
-          Pay Now 5$
+          Pay Now 605 <TbCoinTakaFilled />
         </button>
       </form>
     </div>

@@ -27,6 +27,7 @@ import Profile from "../pages/Dashboard/shared/AdminProfile";
 import AdminProfile from "../pages/Dashboard/shared/AdminProfile";
 import UserProfile from "../pages/Dashboard/shared/UserProfile";
 import PaymentSuccess from "../pages/Dashboard/NormalUser/Payment/PaymentSuccess";
+import PaymentFail from "../pages/Dashboard/NormalUser/Payment/PaymentFail";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
         path: "/payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
       },
+      {
+        path: "/payment/fail/:tranId",
+        element: <PaymentFail></PaymentFail>,
+      },
+
       {
         path: "/contact",
         element: <ContactUs></ContactUs>,
